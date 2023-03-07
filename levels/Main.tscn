@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxjn4d7tfv3hh"]
+[gd_scene load_steps=5 format=3 uid="uid://cxjn4d7tfv3hh"]
 
 [ext_resource type="Texture2D" uid="uid://c8ltjhb4ja8bi" path="res://assets/IMG_9340 .jpg" id="1_socbk"]
+[ext_resource type="Script" path="res://library/Main.gd" id="1_v1q13"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsbh2"]
 texture = ExtResource("1_socbk")
 1:0/0 = 0
 1:0/0/probability = 0.5
 2:0/0 = 0
-2:0/0/terrain = 1
 2:0/0/probability = 0.5
 3:0/0 = 0
 3:0/0/probability = 0.5
@@ -17,7 +17,6 @@ texture = ExtResource("1_socbk")
 1:1/0 = 0
 1:1/0/probability = 0.5
 2:1/0 = 0
-2:1/0/terrain = 0
 3:1/0 = 0
 3:1/0/probability = 0.5
 4:1/0 = 0
@@ -26,7 +25,6 @@ texture = ExtResource("1_socbk")
 1:2/0 = 0
 1:2/0/probability = 0.5
 2:2/0 = 0
-2:2/0/terrain = 6
 2:2/0/probability = 0.5
 3:2/0 = 0
 3:2/0/probability = 0.5
@@ -56,6 +54,7 @@ texture = ExtResource("1_socbk")
 sources/0 = SubResource("TileSetAtlasSource_vsbh2")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_v1q13")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_p3d76")
