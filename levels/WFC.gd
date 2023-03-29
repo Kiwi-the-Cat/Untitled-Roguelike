@@ -2,12 +2,43 @@ extends Node2D
 
 #Declare a board side with Vector2i
 #Integers are default size
-var width:int = 15
-var height:int = 15
-@export var board:Vector2i = Vector2i(width, height)
+
+var x:int = 15
+var y:int = 15
+@export var board:Vector2i = Vector2i(x, y)
+
 
 #This array will contain the coords of every spot on the board
 var map:Array = []
+
+#Atlas coords of all the tiles
+var t00000:Vector2i = Vector2i(4, 0)
+var t10000:Vector2i = Vector2i(5, 0)
+var t01000:Vector2i = Vector2i(6, 0)
+var t11000:Vector2i = Vector2i(4, 1)
+var t00100:Vector2i = Vector2i(5, 1)
+var t10100:Vector2i = Vector2i(6, 1)
+var t01100:Vector2i = Vector2i(4, 2)
+var t11100:Vector2i = Vector2i(5, 2)
+var t00010:Vector2i = Vector2i(6, 2)
+var t10010:Vector2i = Vector2i(4, 3)
+var t01010:Vector2i = Vector2i(5, 3)
+var t11010:Vector2i = Vector2i(6, 3)
+var t00110:Vector2i = Vector2i(4, 4)
+var t10110:Vector2i = Vector2i(5, 4)
+var t01110:Vector2i = Vector2i(6, 4)
+var t11110:Vector2i = Vector2i(4, 5)
+var t00001:Vector2i = Vector2i(5, 5)
+var t10001:Vector2i = Vector2i(6, 5)
+var t01001:Vector2i = Vector2i(2, 0)
+var t11001:Vector2i = Vector2i(2, 1)
+var t00101:Vector2i = Vector2i(2, 2)
+var t10101:Vector2i = Vector2i(3, 0)
+var t01101:Vector2i = Vector2i(3, 1)
+var t11101:Vector2i = Vector2i(3, 2)
+var t00011:Vector2i = Vector2i(3, 3)
+var t10011:Vector2i = Vector2i(3, 4)
+var t01011:Vector2i = Vector2i(3, 5)
 
 #This dict contains all the info for the tiles and rules for wave function collapse
 var tiles:Dictionary = {
@@ -52,35 +83,7 @@ func _ready():
 	for i in range(tiles["tiles"].size()): #Makes def_pos contain 0-26
 		def_pos.append(i)
 	print(def_pos)
-	_generate()
-
-#Master function of the WFC generation
-func _generate():
-	#Makes an sub-array for every coord, containing 26-0
-	for _i in range(width):
-			var line:Array = []
-			for _j in range(height):
-				var possible:Array = def_pos.duplicate(true)
-				possible.reverse()
-				line.append_array(possible)
-			map.append_array(line)
-		
-	print("entering!")
-	#Start first walk on a random position
-	var start_pos:Vector2i = Vector2i(
-		rng.randi_range(0, width),
-		rng.randi_range(0, height)
-		)
-		
-				#The whole process consists on 3 steps:
-			#Collapsing:
-			#Collapsing a tile, selects one of the possible options.
-			#On the first tile all options are available so one is selected
-			#to start the process
-
-func _collapse():
-	pass
-
+	
 
 
 

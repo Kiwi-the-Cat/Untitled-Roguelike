@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxjn4d7tfv3hh"]
 
 [ext_resource type="Script" path="res://levels/WFC.gd" id="1_lm2d1"]
-[ext_resource type="Texture2D" uid="uid://c8ltjhb4ja8bi" path="res://assets/IMG_9340 .jpg" id="1_socbk"]
-[ext_resource type="Texture2D" uid="uid://b2vs11rdrd67s" path="res://assets/grass.jpg" id="3_l4msx"]
+[ext_resource type="Texture2D" uid="uid://ce77hdmcd2i7v" path="res://assets/IMG_9340 .jpg" id="1_socbk"]
+[ext_resource type="Texture2D" uid="uid://8q0l6s4biseq" path="res://assets/grass.jpg" id="3_l4msx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsbh2"]
 texture = ExtResource("1_socbk")
