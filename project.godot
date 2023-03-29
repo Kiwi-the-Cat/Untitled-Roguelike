@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Untitled-roguelike"
-run/main_scene="res://levels/main.tscn"
+run/main_scene="res://levels/Main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_height=640
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [rendering]
 
