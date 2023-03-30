@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxjn4d7tfv3hh"]
+[gd_scene load_steps=10 format=3 uid="uid://cxjn4d7tfv3hh"]
 
 [ext_resource type="Script" path="res://levels/WFC.gd" id="1_lm2d1"]
 [ext_resource type="Texture2D" uid="uid://ce77hdmcd2i7v" path="res://assets/IMG_9340 .jpg" id="1_socbk"]
 [ext_resource type="Texture2D" uid="uid://8q0l6s4biseq" path="res://assets/grass.jpg" id="3_l4msx"]
+[ext_resource type="Script" path="res://levels/CharacterMovement.gd" id="4_2ve0y"]
+[ext_resource type="Texture2D" uid="uid://bjy37sh85ccg5" path="res://icon.svg" id="5_mtnln"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsbh2"]
 texture = ExtResource("1_socbk")
@@ -85,9 +87,24 @@ texture = ExtResource("3_l4msx")
 sources/0 = SubResource("TileSetAtlasSource_vsbh2")
 sources/1 = SubResource("TileSetAtlasSource_dumor")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bidw"]
+size = Vector2(65, 64)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_lm2d1")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_p3d76")
 format = 2
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("4_2ve0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(356.5, 182)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_mtnln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(356.5, 182)
+shape = SubResource("RectangleShape2D_5bidw")
