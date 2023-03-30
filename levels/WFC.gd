@@ -5,8 +5,10 @@ extends Node2D
 
 var x:int = 15
 var y:int = 15
+
 @export var board:Vector2i = Vector2i(x, y)
 
+@onready var tile = $TileMap
 
 #This array will contain the coords of every spot on the board
 var map:Array = []
@@ -78,14 +80,34 @@ var tiles:Dictionary = {
 var rng:RandomNumberGenerator = RandomNumberGenerator.new() #Define the random number generator
 var def_pos:Array =[]
 
+
 func _ready():
 	randomize() #Get random seed
 	for i in range(tiles["tiles"].size()): #Makes def_pos contain 0-26
 		def_pos.append(i)
 	print(def_pos)
-	
+	for i in x: #Creates a map that contains every coord on the map
+		var column:Array = []
+		for j in y:
+			column.append(i)
+		map.append(column)
+	print(map)
+	print(check_neighbors(Vector2i(1,1)))
 
 
+func check_neighbors(coords:Vector2i): #Gets and returns the cardinal neighbors of a tile
+	var neighbors:Array = []
+	neighbors.append(tile.get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_SIDE)) #Get the cells top side neighbor
+	neighbors.append(tile.get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)) #Get the cells bottom side neighbor
+	neighbors.append(tile.get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_LEFT_SIDE)) #Get the cells left side neighbor
+	neighbors.append(tile.get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_RIGHT_SIDE)) #Get the cells right side neighbor
+	return neighbors
+
+
+func entropy():
+	for i in map:
+		for j in map[i]:
+			check_neighbors(Vector2i(map[i][j]))
 
 
 
