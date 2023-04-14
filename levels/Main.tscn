@@ -96,3 +96,4 @@ layer_0/tile_data = PackedInt32Array(-65536, 65536, 0, -65535, 131072, 0, -65534
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_hb88f")]
 position = Vector2(192, 104)
+speed = 400.0

@@ -3,10 +3,10 @@ extends Node2D
 #Declare a board side with Vector2i
 #Integers are default size
 
-var x:int = 15
-var y:int = 15
+@export var x:int = 15
+@export var y:int = 15
 
-@export var board:Vector2i = Vector2i(x, y)
+var board:Vector2i = Vector2i(x, y)
 
 @onready var tile = $TileMap
 
@@ -87,12 +87,10 @@ func _ready():
 		def_pos.append(i)
 	print(def_pos)
 	for i in x: #Creates a map that contains every coord on the map
-		var column:Array = []
 		for j in y:
-			column.append(i)
-		map.append(column)
+			map.append(Vector2i(i, j))
 	print(map)
-	print(check_neighbors(Vector2i(1,1)))
+#	entropy()
 
 
 func check_neighbors(coords:Vector2i): #Gets and returns the cardinal neighbors of a tile
@@ -106,8 +104,9 @@ func check_neighbors(coords:Vector2i): #Gets and returns the cardinal neighbors 
 
 func entropy():
 	for i in map:
-		for j in map[i]:
-			check_neighbors(Vector2i(map[i][j]))
+		for j in map[i.index()]:
+			var currentCoords = map[i][j]
+			print(currentCoords)
 
 
 
