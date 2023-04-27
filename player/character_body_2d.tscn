@@ -8,7 +8,6 @@ size = Vector2(16, 16)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_7v2kx")
-speed = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.123047, 0.125)
