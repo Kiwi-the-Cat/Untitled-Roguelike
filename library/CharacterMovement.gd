@@ -1,17 +1,38 @@
 extends CharacterBody2D
 
-@export var speed = 200
-var friction = 0.1
-var acceleration = 0.7
+#Physics varables
+var speed:int = 200
+var friction:float = 0.1
+var acceleration:float = 0.7
 
-var rolling = false
-var roll_timer = 0
-var roll_cooldown = 0
+#Variables for rolling
+var rolling:bool
+var roll_time:float = .5 #How long the player rolls
+var roll_timer:Timer #Timer active while rolling
+var roll_cooldown:Timer #Timer to prevent consecutive rolling
 
-func get_input():
+func _ready():
+	#Sets variables to coressponding timers
+	roll_timer = get_child(3)
+	roll_cooldown = get_child(4)
+
+func _physics_process(delta):
+	move()
+	if rolling: #Spins while rolling
+		rotation += 15 * delta
+	else:
+		look_at(get_global_mouse_position())
+
+func roll():
+	rolling = !roll_timer.is_stopped()
+	if Input.is_action_just_pressed("roll") && roll_cooldown.get_time_left() == 0:
+		roll_timer.start(roll_time)
+		roll_cooldown.start(roll_time * 5)
+
+func move(): #All stuff to make character move
 	#Speed adjustment if rolling
-	if roll_timer > 30:
-		speed = 800
+	if rolling:
+		speed = 400
 	else:
 		speed = 200
 	
@@ -21,30 +42,14 @@ func get_input():
 		velocity.x = lerp(velocity.x, xDir * speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
-
+	
 	#Vertical movement
 	var yDir = Input.get_axis("up", "down")
 	if yDir != 0:
 		velocity.y = lerp(velocity.y, yDir * speed, acceleration)
 	else:
 		velocity.y = lerp(velocity.y, 0.0, friction)
-
-func roll():
-	if Input.is_action_just_pressed("roll") && roll_timer <= 0 && roll_cooldown <= 0:
-		roll_timer = 50
-	if roll_timer > 0:
-		roll_timer -= 1
-		roll_cooldown = 100
-		rolling = true
-	elif roll_cooldown >= 0:
-		roll_cooldown -= 1
-		rolling = false
-
-func _physics_process(delta):
+	
+	#Calling other nessicary movement functions
 	roll()
-	get_input()
 	move_and_slide()
-	if rolling:
-		rotation += 20 * delta
-	else:
-		look_at(get_global_mouse_position())

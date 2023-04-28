@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://by24vk16felow"]
+[gd_scene load_steps=6 format=3 uid="uid://by24vk16felow"]
 
 [ext_resource type="Script" path="res://library/CharacterMovement.gd" id="1_7v2kx"]
 [ext_resource type="Texture2D" uid="uid://bjy37sh85ccg5" path="res://icon.svg" id="2_apr84"]
+[ext_resource type="Script" path="res://player/RollCooldownBar.gd" id="3_s1iql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5bidw"]
 size = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_830r3"]
+bg_color = Color(0, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_7v2kx")
@@ -18,3 +26,21 @@ shape = SubResource("RectangleShape2D_5bidw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="RollTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="RollCooldown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="RollCooldownBar" type="ProgressBar" parent="."]
+offset_left = -8.0
+offset_top = -13.0
+offset_right = 8.0
+offset_bottom = -9.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_830r3")
+rounded = true
+show_percentage = false
+script = ExtResource("3_s1iql")
