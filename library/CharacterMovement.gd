@@ -22,12 +22,12 @@ func _physics_process(delta):
 #		$CollisionShape2D.rotation += 12.6 * delta
 		pass
 	else:
-		look_at(get_global_mouse_position())
+		$CollisionShape2D.look_at(get_global_mouse_position())
 
 func roll():
 	rolling = !roll_timer.is_stopped()
-	var tween = get_tree().create_tween()
 	if Input.is_action_just_pressed("roll") && roll_cooldown.get_time_left() == 0:
+		var tween = get_tree().create_tween()
 		roll_timer.start(roll_time)
 		roll_cooldown.start(roll_time * 5)
 		tween.tween_property($CollisionShape2D, "rotation_degrees", 360, 0.5)
@@ -63,3 +63,4 @@ func _process(delta):
 	var rota:String = str($CollisionShape2D.rotation_degrees)
 	$Control/Label.set_text(rota)
 	$Control/Label2.set_text(str(delta))
+	$Control/Label3.set_text(str(velocity))

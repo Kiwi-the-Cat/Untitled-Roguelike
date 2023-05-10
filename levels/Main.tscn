@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ys58btnbp7y3"]
+[gd_scene load_steps=10 format=3 uid="uid://ys58btnbp7y3"]
 
 [ext_resource type="Script" path="res://library/Main.gd" id="1_gkjxf"]
 [ext_resource type="Texture2D" uid="uid://ce77hdmcd2i7v" path="res://assets/IMG_9340 .jpg" id="1_socbk"]
@@ -89,6 +89,9 @@ sources/1 = SubResource("TileSetAtlasSource_dumor")
 [sub_resource type="LabelSettings" id="LabelSettings_4m3p4"]
 font_size = 8
 
+[sub_resource type="LabelSettings" id="LabelSettings_kt186"]
+font_size = 8
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gkjxf")
 
@@ -126,3 +129,11 @@ offset_top = 21.0
 offset_right = 107.0
 offset_bottom = 34.0
 label_settings = SubResource("LabelSettings_4m3p4")
+
+[node name="Label3" type="Label" parent="CharacterBody2D/Control"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 34.6667
+offset_right = 77.0
+offset_bottom = 57.6667
+label_settings = SubResource("LabelSettings_kt186")
