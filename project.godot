@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 Console="*res://addons/cheatsheet/cheatsheet.tscn"
-GDShell="*res://addons/gdshell/scripts/gdshell_main.gd"
 
 [display]
 
@@ -33,7 +32,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/QuickPluginManager/plugin.cfg", "res://addons/better-terrain/plugin.cfg", "res://addons/cheatsheet/plugin.cfg", "res://addons/gdshell/plugin.cfg", "res://addons/copilot/plugin.cfg", "res://addons/godotsize/plugin.cfg")
+enabled=PackedStringArray("res://addons/QuickPluginManager/plugin.cfg", "res://addons/better-terrain/plugin.cfg", "res://addons/cheatsheet/plugin.cfg", "res://addons/godotsize/plugin.cfg")
 
 [input]
 
