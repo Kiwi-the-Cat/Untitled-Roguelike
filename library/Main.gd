@@ -1,4 +1,5 @@
-extends Node2D
+extends Node2D #This is like the 3rd or 4th time I've rewritten this script, hopefully the last
+#TODO: Update all the things that call the map array to use the multiple side format
 
 #The play field will be 16 x 16 for now
 @export var x:int = 16 #The width of the field
@@ -52,8 +53,27 @@ func _ready():
 	randomize()
 	$TileMap.clear()
 	var tileIndex:Array #An array that contains the index of all the tiles in the spritesheet
+	
+	var _top:Array = []
+	var _bottom:Array = []
+	var _left:Array = []
+	var _right:Array = []
+	var _start:Array = []
+	
 	for i in range(tiles["tiles"].size()): #Makes minep contain a list of all the tile indexes
-		minep.append(i)
+		_top.append(i)
+		_bottom.append(i)
+		_left.append(i)
+		_right.append(i)
+		_start.append(i)
+	var _sides:Array = []
+	_sides.append(_top) #0
+	_sides.append(_bottom) #1
+	_sides.append(_left) #2
+	_sides.append(_right) #3
+	_sides.append(_start) #4
+	minep.append(_sides)
+	
 	for _y in y: #Creating the map
 		var xAxis:Array = []
 		for _x in x:
@@ -63,46 +83,66 @@ func _ready():
 	
 	var start_x:int = randi_range(0, x)
 	var start_y:int = randi_range(0, y)
-	$TileMap.set_cell(0, Vector2i(start_x, start_y), 1, pick_tile(start_x, start_y))
+	$TileMap.set_cell(0, Vector2i(start_x, start_y), 1, pick_tile(start_x, start_y, 4))
+	collapse()
+	print(sort())
 
-func pick_tile(_x:int, _y:int): #Picks a random tile for those available for a specific cell
-	var rand_tile:int = randi_range(0, map[_y][_x].size())
+func pick_tile(_x:int, _y:int, _side:int): #Picks a random tile for those available for a specific cell
 	var _tiles:Array = tiles["tiles"]
-	map[_x][_y] = _tiles[rand_tile]["index"]
+	var rand_tile:int
+	match _side:
+		0:
+			rand_tile = randi_range(0, map[_y][_x][0].size())
+		1:
+			rand_tile = randi_range(0, map[_y][_x][1].size())
+		2:
+			rand_tile = randi_range(0, map[_y][_x][2].size())
+		3:
+			rand_tile = randi_range(0, map[_y][_x][3].size())
+		4:
+			rand_tile = randi_range(0, map[_y][_x][0][4].size())
+#	map[_x][_y] = _tiles[rand_tile]["index"]
 	return _tiles[rand_tile]["atlas"]
 
 func collapse(): #Collapses possiblities
 	for _y in range(0, y):
 		for _x in range(0, x):
-			if map[_y][_x].size() != 1:
-				entropy(_y, _x)
-
+			entropy(_y, _x)
+#TODO: Here
 func entropy(_y, _x): #Not quite sure how to describe this yet
-	if map[_y - 1][_x] >= 0:
-		for i in map[_y][_x]:
+	if _y - 1 >= 0 and typeof(map[_y - 1][_x][0]) == TYPE_ARRAY: #Checks the tile directly up
+		for i in map[_y][_x][0]:
 			var _rules:Array = []
-			for j in map[_y - 1][_x]:
-				_rules.append(tiles["tiles"][j]["top"])
+			for j in map[_y - 1][_x][0]:
+				_rules.append(tiles["tiles"][j]["rules"]["top"])
 			if i not in _rules:
-				map[_y][_x].erase(i)
-	if map[_y + 1][_x] <= y:
-		for i in map[_y][_x]:
+				map[_y][_x][0].erase(i)
+	if _y + 1 <= y and typeof(map[_y + 1][_x][1]) == TYPE_ARRAY: #Checks the tile directly down
+		for i in map[_y][_x][1]:
 			var _rules:Array = []
-			for j in map[_y + 1][_x]:
-				_rules.append(tiles["tiles"][j]["bottom"])
+			for j in map[_y + 1][_x][1]:
+				_rules.append(tiles["tiles"][j]["rules"]["bottom"])
 			if i not in _rules:
-				map[_y][_x].erase(i)
-	if map[_y][_x - 1]:
-		for i in map[_y][_x]:
+				map[_y][_x][1].erase(i)
+	if _x - 1 >= 0 and typeof(map[_y][_x - 1][2]) == TYPE_ARRAY: #Checks the tile directly to the left
+		for i in map[_y][_x][2]:
 			var _rules:Array = []
-			for j in map[_y][_x - 1]:
-				_rules.append(tiles["tiles"][j]["left"])
+			for j in map[_y][_x - 1][2]:
+				_rules.append(tiles["tiles"][j]["rules"]["left"])
 			if i not in _rules:
-				map[_y][_x].erase(i)
-	if map[_y][_x + 1]:
-		for i in map[_y][_x]:
+				map[_y][_x][2].erase(i)
+	if _x + 1 <= x and typeof(map[_y][_x + 1][3]) == TYPE_ARRAY: #Checks the tile directly to the right
+		for i in map[_y][_x][3]:
 			var _rules:Array = []
-			for j in map[_y][_x + 1]:
-				_rules.append(tiles["tiles"][j]["right"])
+			for j in map[_y][_x + 1][3]:
+				_rules.append(tiles["tiles"][j]["rules"]["right"])
 			if i not in _rules:
-				map[_y][_x].erase(i)
+				map[_y][_x][3].erase(i)
+#TODO: and here
+func sort():
+	var tileEntropy:Array = []
+	for _y in range(0, y):
+		for _x in range(0, x):
+			if typeof(map[_y][_x]) == TYPE_ARRAY:
+				tileEntropy.append(map[_y][_x].size())
+	return tileEntropy
