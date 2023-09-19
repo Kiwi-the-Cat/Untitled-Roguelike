@@ -61,6 +61,3 @@ func move(): #All stuff to make character move
 
 func _process(delta):
 	var rota:String = str($CollisionShape2D.rotation_degrees)
-	$Control/Label.set_text(rota)
-	$Control/Label2.set_text(str(delta))
-	$Control/Label3.set_text(str(velocity))

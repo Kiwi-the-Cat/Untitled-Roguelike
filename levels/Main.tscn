@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ys58btnbp7y3"]
+[gd_scene load_steps=12 format=3 uid="uid://ys58btnbp7y3"]
 
 [ext_resource type="Script" path="res://library/Main.gd" id="1_gkjxf"]
 [ext_resource type="Texture2D" uid="uid://ce77hdmcd2i7v" path="res://assets/IMG_9340 .jpg" id="1_socbk"]
 [ext_resource type="Texture2D" uid="uid://bc7rqjtbjok0s" path="res://assets/Grass_And_Ground_Tile_set.png" id="3_t4wd0"]
 [ext_resource type="PackedScene" uid="uid://dvv1qv3dl5byx" path="res://player/character_body_2d.tscn" id="4_hb88f"]
 [ext_resource type="Texture2D" uid="uid://c7nic7cr6qmrv" path="res://assets/tree_rock_bush_sprites.png" id="4_vpyh7"]
-[ext_resource type="Texture2D" uid="uid://xp23aan5k281" path="res://assets/broke_ship.png" id="5_rl4vw"]
+[ext_resource type="Texture2D" uid="uid://bk2lcp8d8ojuu" path="res://assets/muddy_broken_ship.png" id="5_a0sqp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsbh2"]
 texture = ExtResource("1_socbk")
@@ -318,19 +318,13 @@ sources/0 = SubResource("TileSetAtlasSource_vsbh2")
 sources/2 = SubResource("TileSetAtlasSource_8qsnm")
 sources/3 = SubResource("TileSetAtlasSource_mnyle")
 
-[sub_resource type="LabelSettings" id="LabelSettings_4m3p4"]
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_kt186"]
-font_size = 8
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_621aa"]
 size = Vector2(1002, 499)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gkjxf")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="LevelOne" type="TileMap" parent="."]
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_p3d76")
 format = 2
@@ -342,54 +336,30 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
+layer_1/tile_data = PackedInt32Array(524298, 65539, 1, 589834, 65539, 2, 524299, 131075, 1, 589835, 131075, 2, 458753, 65539, 3, 458754, 131075, 3, 458770, 65539, 3, 458771, 131075, 3, 15, 196611, 1, 65551, 196611, 2, 131087, 196611, 3, 16, 262147, 1, 65552, 262147, 2, 131088, 262147, 3, 26, 196611, 1, 65562, 196611, 2, 131098, 196611, 3, 27, 262147, 1, 65563, 262147, 2, 131099, 262147, 3, 589845, 196611, 1, 655381, 196611, 2, 720917, 196611, 3, 589846, 262147, 1, 655382, 262147, 2, 720918, 262147, 3, 786445, 196611, 0, 786446, 262147, 0, 720898, 65539, 0, 720899, 131075, 0)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("4_hb88f")]
+[node name="Ship" type="StaticBody2D" parent="LevelOne"]
+position = Vector2(294, 86)
+scale = Vector2(0.333333, 0.333333)
+
+[node name="ShipCollision" type="CollisionShape2D" parent="LevelOne/Ship"]
+position = Vector2(6.10352e-05, 0)
+shape = SubResource("RectangleShape2D_621aa")
+
+[node name="MuddyBrokenShip" type="Sprite2D" parent="LevelOne/Ship/ShipCollision"]
+position = Vector2(-1.00006, -1.99997)
+scale = Vector2(5, 5)
+texture = ExtResource("5_a0sqp")
+
+[node name="Player" parent="." instance=ExtResource("4_hb88f")]
 position = Vector2(192, 104)
 scale = Vector2(6, 6)
 motion_mode = 1
 
-[node name="Control" type="Control" parent="CharacterBody2D"]
+[node name="Control" type="Control" parent="Player"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="CharacterBody2D/Control"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 107.0
-offset_bottom = 21.0
-label_settings = SubResource("LabelSettings_4m3p4")
-
-[node name="Label2" type="Label" parent="CharacterBody2D/Control"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 21.0
-offset_right = 107.0
-offset_bottom = 34.0
-label_settings = SubResource("LabelSettings_4m3p4")
-
-[node name="Label3" type="Label" parent="CharacterBody2D/Control"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 34.6667
-offset_right = 77.0
-offset_bottom = 57.6667
-label_settings = SubResource("LabelSettings_kt186")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(882, 258)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(6.10352e-05, 0)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_621aa")
-
-[node name="BrokeShip" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2(-7.00006, -2)
-scale = Vector2(5, 5)
-texture = ExtResource("5_rl4vw")
