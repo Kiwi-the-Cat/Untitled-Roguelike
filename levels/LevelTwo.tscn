@@ -202,7 +202,7 @@ sources/1 = SubResource("TileSetAtlasSource_s8i4p")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="LevelTwo" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_it3qe")
 format = 2
 layer_0/name = "Terrain"
@@ -215,6 +215,5 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(262145, 65537, 3, 262146, 131073, 3, 327690, 65537, 3, 327691, 131073, 3, 327712, 196609, 0, 327713, 262145, 0, 262149, 196609, 0, 262150, 262145, 0, 262163, 196609, 0, 262164, 262145, 0, 327703, 65537, 0, 327704, 131073, 0, 327723, 65537, 0, 327724, 131073, 0, 262158, 65537, 0, 262159, 131073, 0, 327728, 196609, 0, 327729, 262145, 0, 262181, 65537, 3, 262182, 131073, 3)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_c758m")]
+[node name="Player" parent="." instance=ExtResource("3_c758m")]
 position = Vector2(55, 209)
-scale = Vector2(3, 3)
