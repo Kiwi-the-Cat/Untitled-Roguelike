@@ -11,6 +11,9 @@ var roll_time:float = .5 #How long the player rolls
 var roll_timer:Timer #Timer active while rolling
 var roll_cooldown:Timer #Timer to prevent consecutive rolling
 
+#Animation Variables
+@onready var _player = $CollisionShape2D/AnimatedSprite2D
+
 func _ready():
 	#Sets variables to coressponding timers
 	roll_timer = $RollTimer
@@ -22,7 +25,7 @@ func _physics_process(delta):
 #		$CollisionShape2D.rotation += 12.6 * delta
 		pass
 	else:
-		$CollisionShape2D.look_at(get_global_mouse_position())
+		pass
 
 func roll():
 	rolling = !roll_timer.is_stopped()
@@ -64,3 +67,14 @@ func _process(delta):
 	$Control/Label.set_text(rota)
 	$Control/Label2.set_text(str(delta))
 	$Control/Label3.set_text(str(velocity))
+	
+	if (get_global_mouse_position().y > global_position.y) && (velocity.x == 0 && velocity.y == 0):
+		_player.play("idle_foward")
+	elif (get_global_mouse_position().y < global_position.y) && (velocity.x == 0 && velocity.y == 0):
+		_player.play("idle_back")
+	elif false: #side idle
+		pass
+	elif false: #side idle
+		pass
+	else:
+		pass
