@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq61asf70u4en"]
+[gd_scene load_steps=11 format=3 uid="uid://cq61asf70u4en"]
 
 [ext_resource type="Script" path="res://library/Main.gd" id="1_0pl6i"]
 [ext_resource type="Texture2D" uid="uid://ce77hdmcd2i7v" path="res://assets/IMG_9340 .jpg" id="2_vrgra"]
@@ -322,9 +322,6 @@ sources/0 = SubResource("TileSetAtlasSource_vsbh2")
 sources/2 = SubResource("TileSetAtlasSource_8qsnm")
 sources/3 = SubResource("TileSetAtlasSource_mnyle")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_621aa"]
-size = Vector2(1002, 499)
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_0pl6i")
 
@@ -346,14 +343,27 @@ layer_1/tile_data = PackedInt32Array(524298, 65539, 1, 589834, 65539, 2, 524299,
 position = Vector2(294, 86)
 scale = Vector2(0.333333, 0.333333)
 
-[node name="ShipCollision" type="CollisionShape2D" parent="LevelOne/Ship"]
-position = Vector2(6.10352e-05, 0)
-shape = SubResource("RectangleShape2D_621aa")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelOne/Ship"]
+build_mode = 1
+polygon = PackedVector2Array(150, -234, -18.0001, -234, -26.0001, -234, -26.0001, -226, -42.0001, -226, -106, -226, -194, -130, -202, -130, -202, -122, -210, -122, -242, -122, -250, -114, -298, -114, -322, -114, -362, -106, -474.001, 6, -482.001, 6, -482.001, 22, -490.001, 30, -490.001, 78.0001, -482.001, 78.0001, -474.001, 78.0001, -466.001, 86.0001, -466.001, 94.0001, -458.001, 94.0001, -458.001, 94.0001, -450.001, 94.0001, -450.001, 86.0001, -442.001, 86.0001, -442.001, 94.0001, -434, 94.0001, -434, 102, -426, 102, -418, 94.0001, -410, 86.0001, -402, 86.0001, -394, 94.0001, -386, 94.0001, -378, 94.0001, -362, 94.0001, -362, 102, -354, 102, -354, 94.0001, -290, 94.0001, -282, 86.0001, -274, 78.0001, -178, 78.0001, -138, 70.0001, -130, 70.0001, -130, 126, -122, 134, -122, 142, -106, 150, -66.0001, 150, -58.0001, 142, -42.0001, 142, -34.0001, 142, -26.0001, 134, -2.00006, 134, 14, 150, 30, 150, 30, 134, 54, 126, 118, 134, 118, 166, 134, 190, 206, 190, 262, 190, 270, 182, 310, 222, 342, 222, 374, 182, 374, 118, 286, 78.0001, 262, 78.0001, 238, 126, 166, 62.0001, 150, 62.0001, 150, 54.0001, 174, 54.0001, 190, 38, 190, -10, 262, -10, 270, -26, 270, -66.0001, 254, -82.0001, 190, -82.0001, 190, -90.0001, 134, -146, 166, -210)
 
-[node name="MuddyBrokenShip" type="Sprite2D" parent="LevelOne/Ship/ShipCollision"]
+[node name="MuddyBrokenShip" type="Sprite2D" parent="LevelOne/Ship/CollisionPolygon2D"]
+visible = false
 position = Vector2(-1.00006, -1.99997)
 scale = Vector2(5, 5)
 texture = ExtResource("5_7fved")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="LevelOne/Ship"]
+polygon = PackedVector2Array(-408, 106, -411, 106, -411, 113, -417, 113, -417, 118, -422, 118, -430, 131, -434, 162, -423, 176, -393, 202, -380, 188, -381, 162, -380, 139, -385, 125, -392, 107)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="LevelOne/Ship"]
+polygon = PackedVector2Array(-330, 115, -247, 100, -175, 118, -154, 142, -167, 166, -249, 169, -283, 175, -302, 181, -312, 190, -328, 188, -337, 175, -343, 141, -343, 123)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="LevelOne/Ship"]
+polygon = PackedVector2Array(5, 151, -6.00006, 200, 31, 234, 132, 231, 132, 196, 106, 159, 78.0001, 142, 36, 144, 30, 155)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="LevelOne/Ship"]
+polygon = PackedVector2Array(409, 108, 459, 108, 469, 113, 479, 123, 479, 138, 469, 148, 459, 148, 459, 143, 429, 143, 439, 153, 439, 171, 424, 178, 389, 178, 389, 158, 399, 133, 404, 133, 404, 118)
 
 [node name="Player" parent="." instance=ExtResource("6_ycso3")]
 position = Vector2(192, 104)
