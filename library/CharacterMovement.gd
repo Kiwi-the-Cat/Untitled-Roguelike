@@ -65,14 +65,21 @@ func move(): #All stuff to make character move
 func _process(delta):
 	var rota:String = str($CollisionShape2D.rotation_degrees)
 	
-	if (get_global_mouse_position().y > global_position.y) && (velocity.x == 0 && velocity.y == 0):
+	var mousePos:Vector2i = get_global_mouse_position() #Global mouse position
+	var screenX:float = get_viewport().size.x #Viewport X axis 
+	var screenY:float = get_viewport().size.y #Viewport Y axis
+	var xPercent:float = mousePos.x / screenX
+	var yPercent:float = mousePos.y / screenY
+	
+	if   (yPercent >= 0.25) && (velocity.x <= 1 && velocity.y <= 1): #Plays foward idle animation when mouse is on bottom half of player
 		_player.play("idle_foward")
-	elif (get_global_mouse_position().y < global_position.y) && (velocity.x == 0 && velocity.y == 0):
+		
+	elif (yPercent <= -0.25) && (velocity.x <= 1 && velocity.y <= 1) && (xPercent <= -0.5 && xPercent >= 0.5): #Plays back idle animation when mouse is on top half of player
 		_player.play("idle_back")
-	elif false: #side idle
-		pass
-	elif false: #side idle
-		pass
+		
+	elif (xPercent <= -0.25) && (velocity.x <= 1 && velocity.y <= 1):
+		_player.play("idle_left")
+		
 	else:
-		pass
+		_player.stop()
 
