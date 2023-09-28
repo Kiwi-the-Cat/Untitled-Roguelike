@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 #Physics varables
-var speed:int = 200
-var friction:float = 0.1
-var acceleration:float = 0.7
+@export var speed:int = 300
+@export var friction:float = 0.1
+@export var acceleration:float = 0.7
 
 #Variables for rolling
 var rolling:bool
@@ -61,6 +61,7 @@ func move(): #All stuff to make character move
 	#Calling other nessicary movement functions
 	roll()
 	move_and_slide()
+	velocity.normalized()
 
 func _process(delta):
 	var rota:String = str($CollisionShape2D.rotation_degrees)
