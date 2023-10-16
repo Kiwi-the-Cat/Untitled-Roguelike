@@ -84,3 +84,7 @@ func _process(delta):
 	else:
 		_player.stop()
 
+
+
+func _on_exit_body_entered(body):
+	get_tree().change_scene_to_file("res://levels/LevelTwo.tscn")
