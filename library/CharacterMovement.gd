@@ -12,7 +12,7 @@ var roll_timer:Timer #Timer active while rolling
 var roll_cooldown:Timer #Timer to prevent consecutive rolling
 
 #Animation Variables
-@onready var _player = $CollisionShape2D/AnimatedSprite2D
+@onready var _player = $PlayerCollision/AnimatedSprite2D
 
 func _ready():
 	#Sets variables to coressponding timers
@@ -33,8 +33,8 @@ func roll():
 		var tween = get_tree().create_tween()
 		roll_timer.start(roll_time)
 		roll_cooldown.start(roll_time * 5)
-		tween.tween_property($CollisionShape2D, "rotation_degrees", 360, 0.5)
-		$CollisionShape2D.rotation_degrees = 0
+		tween.tween_property($PlayerCollision, "rotation_degrees", 360, 0.5)
+		$PlayerCollision.rotation_degrees = 0
 
 
 func move(): #All stuff to make character move
@@ -75,5 +75,9 @@ func _process(delta):
 
 
 
-func _on_exit_body_entered(body):
-	get_tree().change_scene_to_file("res://levels/LevelTwo.tscn")
+func _on_exit_body_entered(body): #Level Transistions
+	match get_tree().current_scene.name:
+		"LevelOne":
+			get_tree().change_scene_to_file("res://levels/LevelTwo.tscn")
+		"LevelTwo":
+			get_tree().change_scene_to_file("res://levels/LevelThree.tscn")
