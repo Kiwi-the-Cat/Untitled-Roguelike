@@ -1,108 +1,36 @@
-[gd_scene load_steps=20 format=3 uid="uid://dvv1qv3dl5byx"]
+[gd_scene load_steps=9 format=3 uid="uid://dvv1qv3dl5byx"]
 
 [ext_resource type="Script" path="res://library/CharacterMovement.gd" id="1_7v2kx"]
 [ext_resource type="Texture2D" uid="uid://dxjhi48us853h" path="res://assets/char_idle_forward.png" id="2_8xdgw"]
-[ext_resource type="Texture2D" uid="uid://bf76o361o337e" path="res://assets/char_idle_backward.png" id="2_ipr3i"]
 [ext_resource type="Script" path="res://library/RollCooldownBar.gd" id="3_s1iql"]
-[ext_resource type="Texture2D" uid="uid://dg3ntb6yggw1h" path="res://assets/char_idle_left.png" id="4_ofka5"]
-[ext_resource type="Texture2D" uid="uid://cph284ow44j47" path="res://assets/char_idle_right.png" id="5_jyftb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5sxa"]
 radius = 16.0
 height = 34.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ysu4y"]
-atlas = ExtResource("2_ipr3i")
-region = Rect2(0, 0, 32, 64)
+[sub_resource type="Animation" id="Animation_0bajx"]
+resource_name = "Foward_Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3h0dk"]
-atlas = ExtResource("2_ipr3i")
-region = Rect2(32, 0, 32, 64)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uq0g"]
+_data = {
+"Foward_Idle": SubResource("Animation_0bajx")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_va1pl"]
-atlas = ExtResource("2_8xdgw")
-region = Rect2(0, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mvaph"]
-atlas = ExtResource("2_8xdgw")
-region = Rect2(32, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_goctf"]
-atlas = ExtResource("2_8xdgw")
-region = Rect2(64, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nkl0t"]
-atlas = ExtResource("2_8xdgw")
-region = Rect2(96, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_67jrq"]
-atlas = ExtResource("4_ofka5")
-region = Rect2(0, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5goch"]
-atlas = ExtResource("4_ofka5")
-region = Rect2(32, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u0ub0"]
-atlas = ExtResource("5_jyftb")
-region = Rect2(0, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4dn1k"]
-atlas = ExtResource("5_jyftb")
-region = Rect2(32, 0, 32, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_unbdl"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ysu4y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3h0dk")
-}],
-"loop": true,
-"name": &"idle_back",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_va1pl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mvaph")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_goctf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nkl0t")
-}],
-"loop": true,
-"name": &"idle_foward",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_67jrq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5goch")
-}],
-"loop": true,
-"name": &"idle_left",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u0ub0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4dn1k")
-}],
-"loop": true,
-"name": &"idle_right",
-"speed": 2.0
-}]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0cion"]
+graph_offset = Vector2(754.04, 168.477)
+nodes/output/position = Vector2(1240, 240)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_830r3"]
 bg_color = Color(0, 1, 1, 1)
@@ -118,11 +46,21 @@ script = ExtResource("1_7v2kx")
 position = Vector2(0, 50)
 shape = SubResource("CapsuleShape2D_h5sxa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerCollision"]
+[node name="AnimatedSprite2D" type="Sprite2D" parent="PlayerCollision"]
 position = Vector2(0, -50)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_unbdl")
-animation = &"idle_right"
+texture = ExtResource("2_8xdgw")
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerCollision/AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_6uq0g")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="PlayerCollision/AnimatedSprite2D"]
+tree_root = SubResource("AnimationNodeBlendTree_0cion")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
