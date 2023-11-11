@@ -13,6 +13,7 @@ var roll_cooldown:Timer #Timer to prevent consecutive rolling
 
 #Animation Variables
 @onready var _player = $PlayerCollision/AnimatedSprite2D
+@onready var animation_tree:AnimationTree = $AnimationTree
 
 func _ready():
 	#Sets variables to coressponding timers
@@ -72,6 +73,7 @@ func _process(delta):
 	var xPercent:float = mousePos.x / screenX
 	var yPercent:float = mousePos.y / screenY
 	
+	print(get_angle_to(get_global_mouse_position()))
 
 
 
@@ -81,3 +83,31 @@ func _on_exit_body_entered(body): #Level Transistions
 			get_tree().change_scene_to_file("res://levels/LevelTwo.tscn")
 		"LevelTwo":
 			get_tree().change_scene_to_file("res://levels/LevelThree.tscn")
+
+func update_animation_parameters():
+	if (get_angle_to(get_global_mouse_position()) <= 2.54 and get_angle_to(get_global_mouse_position()) >= 0.5):
+		animation_tree["parameters/conditions/facing_down"] = true
+		animation_tree["parameters/conditions/facing_left"] = false
+		animation_tree["parameters/conditions/facing_right"] = false
+		animation_tree["parameters/conditions/facing_up"] = false
+	elif (get_angle_to(get_global_mouse_position()) >= 2.65 or get_angle_to(get_global_mouse_position()) <= -2.6):
+		animation_tree["parameters/conditions/facing_down"] = false
+		animation_tree["parameters/conditions/facing_left"] = true
+		animation_tree["parameters/conditions/facing_right"] = false
+		animation_tree["parameters/conditions/facing_up"] = false
+	elif (get_angle_to(get_global_mouse_position()) >= -0.5 and get_angle_to(get_global_mouse_position()) <= .5):
+		animation_tree["parameters/conditions/facing_down"] = false
+		animation_tree["parameters/conditions/facing_left"] = false
+		animation_tree["parameters/conditions/facing_right"] = true
+		animation_tree["parameters/conditions/facing_up"] = false
+	elif (get_angle_to(get_global_mouse_position()) >= -2.9 and get_angle_to(get_global_mouse_position()) <= -0.53):
+		animation_tree["parameters/conditions/facing_down"] = false
+		animation_tree["parameters/conditions/facing_left"] = false
+		animation_tree["parameters/conditions/facing_right"] = false
+		animation_tree["parameters/conditions/facing_up"] = true
+
+
+
+
+
+

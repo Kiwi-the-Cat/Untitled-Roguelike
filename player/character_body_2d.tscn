@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvv1qv3dl5byx"]
+[gd_scene load_steps=27 format=3 uid="uid://dvv1qv3dl5byx"]
 
 [ext_resource type="Script" path="res://library/CharacterMovement.gd" id="1_7v2kx"]
 [ext_resource type="Texture2D" uid="uid://dxjhi48us853h" path="res://assets/char_idle_forward.png" id="2_8xdgw"]
@@ -7,6 +7,13 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5sxa"]
 radius = 16.0
 height = 34.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_830r3"]
+bg_color = Color(0, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="Animation" id="Animation_0bajx"]
 resource_name = "Foward_Idle"
@@ -28,16 +35,80 @@ _data = {
 "Foward_Idle": SubResource("Animation_0bajx")
 }
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0cion"]
-graph_offset = Vector2(754.04, 168.477)
-nodes/output/position = Vector2(1240, 240)
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_41jhd"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_830r3"]
-bg_color = Color(0, 1, 1, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dqkq8"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dt78w"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_35601"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_spe6c"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_st5qt"]
+advance_mode = 2
+advance_condition = &"facing_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yow02"]
+advance_mode = 2
+advance_condition = &"facing_left"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4a0ps"]
+advance_mode = 2
+advance_condition = &"facing_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3qwon"]
+advance_mode = 2
+advance_condition = &"facing_left"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5lq6i"]
+advance_mode = 2
+advance_condition = &"facing_right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3a75m"]
+advance_mode = 2
+advance_condition = &"facing_down"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2hehl"]
+advance_mode = 2
+advance_condition = &"facing_right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l11bg"]
+advance_mode = 2
+advance_condition = &"facing_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a6yo5"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hs3lr"]
+advance_mode = 2
+advance_condition = &"facing_right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v7yta"]
+advance_mode = 2
+advance_condition = &"facing_left"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ycwjo"]
+advance_mode = 2
+advance_condition = &"facing_up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8le77"]
+advance_mode = 2
+advance_condition = &"facing_down"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nobou"]
+states/DIdle/node = SubResource("AnimationNodeBlendSpace2D_41jhd")
+states/DIdle/position = Vector2(471, 202)
+states/LIdle/node = SubResource("AnimationNodeBlendSpace2D_dqkq8")
+states/LIdle/position = Vector2(344, 100)
+states/Move/node = SubResource("AnimationNodeBlendSpace2D_dt78w")
+states/Move/position = Vector2(855, -60)
+states/RIdle/node = SubResource("AnimationNodeBlendSpace2D_35601")
+states/RIdle/position = Vector2(606, 100)
+states/UIdle/node = SubResource("AnimationNodeBlendSpace2D_spe6c")
+states/UIdle/position = Vector2(471, 20)
+transitions = ["LIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_st5qt"), "UIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_yow02"), "LIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_4a0ps"), "DIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_3qwon"), "DIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_5lq6i"), "RIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_3a75m"), "UIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_2hehl"), "RIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_l11bg"), "Start", "LIdle", SubResource("AnimationNodeStateMachineTransition_a6yo5"), "LIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_hs3lr"), "RIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_v7yta"), "DIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_ycwjo"), "UIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_8le77")]
+graph_offset = Vector2(-87, -257)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7v2kx")
@@ -51,16 +122,6 @@ position = Vector2(0, -50)
 scale = Vector2(2, 2)
 texture = ExtResource("2_8xdgw")
 hframes = 4
-frame = 3
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerCollision/AnimatedSprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_6uq0g")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="PlayerCollision/AnimatedSprite2D"]
-tree_root = SubResource("AnimationNodeBlendTree_0cion")
-anim_player = NodePath("../AnimationPlayer")
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -82,3 +143,22 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_830r3")
 rounded = true
 show_percentage = false
 script = ExtResource("3_s1iql")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PlayerCollision/AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_6uq0g")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_nobou")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/facing_down = false
+parameters/conditions/facing_left = false
+parameters/conditions/facing_right = false
+parameters/conditions/facing_up = false
+parameters/DIdle/blend_position = Vector2(0, 0)
+parameters/LIdle/blend_position = Vector2(0, 0)
+parameters/Move/blend_position = Vector2(0, 0)
+parameters/RIdle/blend_position = Vector2(0, 0)
+parameters/UIdle/blend_position = Vector2(0, 0)
