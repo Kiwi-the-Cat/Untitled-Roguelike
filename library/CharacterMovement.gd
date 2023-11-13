@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
+#Combat variables
 signal knife_active
 
-#Physics varables
+@export var health:int = 20
+
+#Physics variables
 @export var speed:int = 300
 @export var friction:float = 0.1
 @export var acceleration:float = 0.7
@@ -116,3 +119,10 @@ func update_animation_parameters():
 
 func _on_knife_body_entered(body):
 	knife_active.emit()
+
+func hurt():
+	health -= 2;
+	print("Player: ", health)
+
+func _on_enemy_enemy_attack():
+	hurt();
