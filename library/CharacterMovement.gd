@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-signal knife_active
-
 #Physics varables
 @export var speed:int = 300
 @export var friction:float = 0.1
@@ -75,20 +73,9 @@ func _process(delta):
 	var xPercent:float = mousePos.x / screenX
 	var yPercent:float = mousePos.y / screenY
 	
-<<<<<<< HEAD
 	print(get_angle_to(get_global_mouse_position()))
 
 
-=======
-	#Enables knife attack when mouse is clicked
-	if Input.is_action_pressed("attack"):
-		$Knife.visible = true
-		$Knife/KnifeHitbox.disabled = false
-		$Knife.look_at(Vector2(mousePos.x, mousePos.y))
-	else:
-		$Knife.visible = false
-		$Knife/KnifeHitbox.disabled = true
->>>>>>> 6f4188459c7ed1570053c6d36f46be01678528cf
 
 func _on_exit_body_entered(body): #Level Transistions
 	match get_tree().current_scene.name:
@@ -97,7 +84,6 @@ func _on_exit_body_entered(body): #Level Transistions
 		"LevelTwo":
 			get_tree().change_scene_to_file("res://levels/LevelThree.tscn")
 
-<<<<<<< HEAD
 func update_animation_parameters():
 	if (get_angle_to(get_global_mouse_position()) <= 2.54 and get_angle_to(get_global_mouse_position()) >= 0.5):
 		animation_tree["parameters/conditions/facing_down"] = true
@@ -125,7 +111,3 @@ func update_animation_parameters():
 
 
 
-=======
-func _on_knife_body_entered(body):
-	knife_active.emit()
->>>>>>> 6f4188459c7ed1570053c6d36f46be01678528cf
