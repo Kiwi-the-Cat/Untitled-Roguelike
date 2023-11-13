@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 [gd_scene load_steps=27 format=3 uid="uid://dvv1qv3dl5byx"]
+=======
+[gd_scene load_steps=11 format=3 uid="uid://dvv1qv3dl5byx"]
+>>>>>>> 6f4188459c7ed1570053c6d36f46be01678528cf
 
 [ext_resource type="Script" path="res://library/CharacterMovement.gd" id="1_7v2kx"]
 [ext_resource type="Texture2D" uid="uid://dxjhi48us853h" path="res://assets/char_idle_forward.png" id="2_8xdgw"]
 [ext_resource type="Script" path="res://library/RollCooldownBar.gd" id="3_s1iql"]
+[ext_resource type="Texture2D" uid="uid://bjy37sh85ccg5" path="res://icon.svg" id="4_ajuvv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5sxa"]
 radius = 16.0
@@ -110,6 +115,9 @@ states/UIdle/position = Vector2(471, 20)
 transitions = ["LIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_st5qt"), "UIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_yow02"), "LIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_4a0ps"), "DIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_3qwon"), "DIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_5lq6i"), "RIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_3a75m"), "UIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_2hehl"), "RIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_l11bg"), "Start", "LIdle", SubResource("AnimationNodeStateMachineTransition_a6yo5"), "LIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_hs3lr"), "RIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_v7yta"), "DIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_ycwjo"), "UIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_8le77")]
 graph_offset = Vector2(-87, -257)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyn6i"]
+height = 98.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7v2kx")
 
@@ -144,6 +152,7 @@ rounded = true
 show_percentage = false
 script = ExtResource("3_s1iql")
 
+<<<<<<< HEAD
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../PlayerCollision/AnimatedSprite2D")
 libraries = {
@@ -162,3 +171,20 @@ parameters/LIdle/blend_position = Vector2(0, 0)
 parameters/Move/blend_position = Vector2(0, 0)
 parameters/RIdle/blend_position = Vector2(0, 0)
 parameters/UIdle/blend_position = Vector2(0, 0)
+=======
+[node name="Knife" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="KnifeHitbox" type="CollisionShape2D" parent="Knife"]
+position = Vector2(85, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gyn6i")
+
+[node name="KnifeSprite" type="Sprite2D" parent="Knife"]
+position = Vector2(83.75, 1)
+scale = Vector2(0.613281, 0.15625)
+texture = ExtResource("4_ajuvv")
+
+[connection signal="body_entered" from="Knife" to="." method="_on_knife_body_entered"]
+>>>>>>> 6f4188459c7ed1570053c6d36f46be01678528cf
