@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://dvv1qv3dl5byx"]
+[gd_scene load_steps=29 format=3 uid="uid://dvv1qv3dl5byx"]
 
 [ext_resource type="Script" path="res://library/CharacterMovement.gd" id="1_7v2kx"]
 [ext_resource type="Texture2D" uid="uid://dxjhi48us853h" path="res://assets/char_idle_forward.png" id="2_8xdgw"]
 [ext_resource type="Script" path="res://library/RollCooldownBar.gd" id="3_s1iql"]
+[ext_resource type="Texture2D" uid="uid://ctliq2xur1hmu" path="res://icon.png" id="4_h8nl0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5sxa"]
 radius = 16.0
@@ -110,6 +111,9 @@ states/UIdle/position = Vector2(471, 20)
 transitions = ["LIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_st5qt"), "UIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_yow02"), "LIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_4a0ps"), "DIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_3qwon"), "DIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_5lq6i"), "RIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_3a75m"), "UIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_2hehl"), "RIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_l11bg"), "Start", "LIdle", SubResource("AnimationNodeStateMachineTransition_a6yo5"), "LIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_hs3lr"), "RIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_v7yta"), "DIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_ycwjo"), "UIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_8le77")]
 graph_offset = Vector2(-87, -257)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4jh5"]
+size = Vector2(90, 10)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7v2kx")
 
@@ -162,3 +166,18 @@ parameters/LIdle/blend_position = Vector2(0, 0)
 parameters/Move/blend_position = Vector2(0, 0)
 parameters/RIdle/blend_position = Vector2(0, 0)
 parameters/UIdle/blend_position = Vector2(0, 0)
+
+[node name="Knife" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="KnifeCollision" type="CollisionShape2D" parent="Knife"]
+position = Vector2(68, 0)
+shape = SubResource("RectangleShape2D_f4jh5")
+
+[node name="KnifeSprite" type="Sprite2D" parent="Knife"]
+position = Vector2(67, 0)
+scale = Vector2(0.695313, 0.078125)
+texture = ExtResource("4_h8nl0")
+
+[connection signal="body_entered" from="Knife" to="." method="_on_knife_body_entered"]

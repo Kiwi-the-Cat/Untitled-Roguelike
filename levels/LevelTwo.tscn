@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbi4i1dnq1dnv" path="res://assets/Grass_And_Ground_Tile_set.png" id="1_ktb2u"]
 [ext_resource type="Texture2D" uid="uid://c7nic7cr6qmrv" path="res://assets/tree_rock_bush_sprites.png" id="2_l27sn"]
-[ext_resource type="PackedScene" path="res://player/character_body_2d.tscn" id="3_c758m"]
+[ext_resource type="PackedScene" uid="uid://dvv1qv3dl5byx" path="res://player/character_body_2d.tscn" id="3_c758m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0itru"]
 texture = ExtResource("1_ktb2u")

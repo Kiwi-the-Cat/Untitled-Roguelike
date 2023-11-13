@@ -79,11 +79,11 @@ func _process(delta):
 	#Enables knife attack when mouse is clicked
 	if Input.is_action_pressed("attack"):
 		$Knife.visible = true
-		$Knife/KnifeHitbox.disabled = false
+		$Knife/KnifeCollision.disabled = false
 		$Knife.look_at(Vector2(mousePos.x, mousePos.y))
 	else:
 		$Knife.visible = false
-		$Knife/KnifeHitbox.disabled = true
+		$Knife/KnifeCollision.disabled = true
 
 func _on_exit_body_entered(body): #Level Transistions
 	match get_tree().current_scene.name:
@@ -114,11 +114,5 @@ func update_animation_parameters():
 		animation_tree["parameters/conditions/facing_right"] = false
 		animation_tree["parameters/conditions/facing_up"] = true
 
-
-
-
-
-
 func _on_knife_body_entered(body):
 	knife_active.emit()
-
