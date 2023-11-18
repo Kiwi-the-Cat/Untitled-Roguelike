@@ -7,11 +7,12 @@ extends CharacterBody2D
 signal enemyAttack
 var firstHit:bool = true #Fixes enemy instantly hitting on scene start
 var attacking:bool = true
+@onready var attackTimer:Timer = $EnemyArea/AttackTimer
 
 #Movement Variables
 @onready var navAgent = $NavigationAgent2D
 var target:Vector2
-var speed:int = 100
+var speed:int = 200
 var currentPos:Vector2
 var nextPos:Vector2
 
@@ -44,6 +45,11 @@ func _on_player_knife_active():
 func _on_enemy_area_body_entered(body):
 	if(!firstHit):
 		enemyAttack.emit()
-		attacking = false;
+		attacking = false
+		attackTimer.start(0.5)
 	else:
-		firstHit = false;
+		firstHit = false
+
+
+func _on_attack_timer_timeout():
+	attacking = true
