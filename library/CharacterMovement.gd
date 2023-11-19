@@ -6,32 +6,22 @@ signal knife_active
 @export var health:int = 20
 
 #Physics variables
-@export var speed:int = 300
+@export var speed:int
 @export var friction:float = 0.1
 @export var acceleration:float = 0.7
 
 #Variables for rolling
 var rolling:bool
 var roll_time:float = .5 #How long the player rolls
-var roll_timer:Timer #Timer active while rolling
-var roll_cooldown:Timer #Timer to prevent consecutive rolling
+@onready var roll_timer:Timer = $RollTimer #Timer active while rolling
+@onready var roll_cooldown:Timer = $RollCooldown #Timer to prevent consecutive rolling
 
 #Animation Variables
 @onready var _player = $PlayerCollision/AnimatedSprite2D
 @onready var animation_tree:AnimationTree = $AnimationTree
 
-func _ready():
-	#Sets variables to coressponding timers
-	roll_timer = $RollTimer
-	roll_cooldown = $RollCooldown
-
 func _physics_process(delta):
 	move()
-	if rolling: #Spins while rolling
-#		$CollisionShape2D.rotation += 12.6 * delta
-		pass
-	else:
-		pass
 
 func roll():
 	rolling = !roll_timer.is_stopped()
@@ -42,13 +32,12 @@ func roll():
 		tween.tween_property($PlayerCollision, "rotation_degrees", 360, 0.5)
 		$PlayerCollision.rotation_degrees = 0
 
-
 func move(): #All stuff to make character move
 	#Speed adjustment if rolling
 	if rolling:
-		speed = 400
+		speed = 300
 	else:
-		speed = 200
+		speed = 150
 	
 	#Horizontal movement
 	var xDir = Input.get_axis("left", "right")

@@ -136,13 +136,12 @@ sources/2 = SubResource("TileSetAtlasSource_8qsnm")
 sources/3 = SubResource("TileSetAtlasSource_mnyle")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtyma"]
-size = Vector2(56, 52.5)
+size = Vector2(19, 18.25)
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_0pl6i")
 
 [node name="LevelOneTiles" type="TileMap" parent="."]
-scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_p3d76")
 format = 2
 layer_0/name = "Terrain"
@@ -179,16 +178,20 @@ polygon = PackedVector2Array(5, 151, -6.00006, 200, 31, 234, 132, 231, 132, 196,
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="LevelOneTiles/Ship"]
 polygon = PackedVector2Array(409, 108, 459, 108, 469, 113, 479, 123, 479, 138, 469, 148, 459, 148, 459, 143, 429, 143, 439, 153, 439, 171, 424, 178, 389, 178, 389, 158, 399, 133, 404, 133, 404, 118)
 
-[node name="Player" parent="." instance=ExtResource("6_ycso3")]
-position = Vector2(192, 104)
-motion_mode = 1
-speed = 450
-acceleration = 1.0
-
 [node name="Exit" type="Area2D" parent="."]
 
 [node name="ExitCollision" type="CollisionShape2D" parent="Exit"]
-position = Vector2(2451, 1112.75)
+position = Vector2(817, 371)
 shape = SubResource("RectangleShape2D_dtyma")
+
+[node name="Player" parent="." instance=ExtResource("6_ycso3")]
+position = Vector2(79, 57)
+
+[node name="PlayerCam" type="Camera2D" parent="Player"]
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 925
+limit_bottom = 415
 
 [connection signal="body_entered" from="Exit" to="Player" method="_on_exit_body_entered"]

@@ -115,6 +115,7 @@ graph_offset = Vector2(-87, -257)
 size = Vector2(90, 10)
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_7v2kx")
@@ -129,9 +130,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_8xdgw")
 hframes = 4
 
-[node name="Camera" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-
 [node name="RollCooldown" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -141,10 +139,10 @@ wait_time = 0.8
 one_shot = true
 
 [node name="RollCooldownBar" type="ProgressBar" parent="."]
-offset_left = -8.0
-offset_top = -13.0
-offset_right = 8.0
-offset_bottom = -9.0
+offset_left = -10.0
+offset_top = -62.0
+offset_right = 6.0
+offset_bottom = -58.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_830r3")
 rounded = true
 show_percentage = false

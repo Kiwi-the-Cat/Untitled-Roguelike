@@ -173,8 +173,13 @@ position = Vector2(417, 184)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
 
 [node name="Player" parent="." instance=ExtResource("3_pcbn6")]
-position = Vector2(58, 185)
-scale = Vector2(0.5, 0.5)
+
+[node name="PlayerCam" type="Camera2D" parent="Player"]
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 670
+limit_bottom = 350
 
 [connection signal="enemyAttack" from="Enemy" to="Player" method="_on_enemy_enemy_attack"]
 [connection signal="knife_active" from="Player" to="Enemy" method="_on_player_knife_active"]
