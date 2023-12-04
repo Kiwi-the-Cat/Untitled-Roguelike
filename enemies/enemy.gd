@@ -28,7 +28,7 @@ func move():
 	velocity = (nextPos - currentPos).normalized() * speed
 	
 	if(!attacking): #Prevents enemy from repeatedly hitting player
-		velocity *= -1ddd
+		velocity *= -1
 	
 	move_and_slide()
 
