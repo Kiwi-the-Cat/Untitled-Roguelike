@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dvv1qv3dl5byx"]
+[gd_scene load_steps=77 format=3 uid="uid://dvv1qv3dl5byx"]
 
 [ext_resource type="Script" path="res://library/CharacterMovement.gd" id="1_7v2kx"]
 [ext_resource type="Texture2D" uid="uid://dxjhi48us853h" path="res://assets/char_idle_forward.png" id="2_8xdgw"]
@@ -258,6 +258,13 @@ graph_offset = Vector2(20, -124)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4jh5"]
 size = Vector2(90, 10)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyujw"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 3
@@ -326,5 +333,15 @@ shape = SubResource("RectangleShape2D_f4jh5")
 position = Vector2(67, 0)
 scale = Vector2(0.695313, 0.078125)
 texture = ExtResource("4_h8nl0")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -30.0
+offset_top = 72.0
+offset_right = 30.0
+offset_bottom = 82.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_nyujw")
+max_value = 20.0
+step = 1.0
+show_percentage = false
 
 [connection signal="body_entered" from="Knife" to="." method="_on_knife_body_entered"]

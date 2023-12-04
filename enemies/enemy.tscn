@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd8bdomu8khkc"]
+[gd_scene load_steps=6 format=3 uid="uid://cd8bdomu8khkc"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_yxqfl"]
 [ext_resource type="Texture2D" uid="uid://bjy37sh85ccg5" path="res://icon.svg" id="2_ckfc4"]
@@ -8,6 +8,13 @@ size = Vector2(34, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqq16"]
 size = Vector2(32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi0fh"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 3
@@ -30,6 +37,16 @@ shape = SubResource("RectangleShape2D_tqq16")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ckfc4")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -17.0
+offset_top = 18.0
+offset_right = 17.0
+offset_bottom = 23.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_mi0fh")
+max_value = 20.0
+step = 1.0
+show_percentage = false
 
 [connection signal="body_entered" from="EnemyArea" to="." method="_on_enemy_area_body_entered"]
 [connection signal="timeout" from="EnemyArea/AttackTimer" to="." method="_on_attack_timer_timeout"]

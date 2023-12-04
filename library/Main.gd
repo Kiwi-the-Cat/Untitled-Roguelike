@@ -1,3 +1,4 @@
-extends Node2D #This is like the 6th or 7th time I've rewritten this script, hopefully the last
+extends Node2D
 
-var Levels:Array = [] #Array that conains the levels that this scene could be
+func _ready():
+	get_tree().change_scene_to_file("res://levels/LevelOne.tscn")

@@ -77,6 +77,8 @@ func _process(delta):
 	else:
 		$Knife.visible = false
 		$Knife/KnifeCollision.disabled = true
+		
+	$HealthBar.value = health
 
 func _on_exit_body_entered(body): #Level Transistions
 	match get_tree().current_scene.name:

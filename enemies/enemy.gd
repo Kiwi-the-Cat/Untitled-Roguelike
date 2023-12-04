@@ -18,6 +18,7 @@ var nextPos:Vector2
 
 func _process(delta):
 	move()
+	$HealthBar.value = health
 
 func move():
 	target = player.position
@@ -35,7 +36,7 @@ func move():
 func hurt():
 	health -= 2
 	print("Enemy: ", health)
-	if(health <= 0):
+	if(health <= 0): #breaks if hit after killed, won't be an issue once attack mechanics are improved
 		print("Dead")
 		get_parent().remove_child(self)
 
