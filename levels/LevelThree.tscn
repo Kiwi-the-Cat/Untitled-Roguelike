@@ -169,10 +169,14 @@ layer_1/tile_data = PackedInt32Array(589827, 1, 1, 524304, 262145, 0, 65548, 131
 
 [node name="Enemy" parent="." instance=ExtResource("4_2msrt")]
 position = Vector2(417, 184)
+health = null
+speed = null
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
 
 [node name="Player" parent="." instance=ExtResource("3_pcbn6")]
+position = Vector2(40, 152)
+metadata/_edit_group_ = true
 
 [node name="PlayerCam" type="Camera2D" parent="Player"]
 zoom = Vector2(2.5, 2.5)

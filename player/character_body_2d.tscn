@@ -109,7 +109,7 @@ states/RIdle/position = Vector2(606, 100)
 states/UIdle/node = SubResource("AnimationNodeBlendSpace2D_spe6c")
 states/UIdle/position = Vector2(471, 20)
 transitions = ["LIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_st5qt"), "UIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_yow02"), "LIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_4a0ps"), "DIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_3qwon"), "DIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_5lq6i"), "RIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_3a75m"), "UIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_2hehl"), "RIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_l11bg"), "Start", "LIdle", SubResource("AnimationNodeStateMachineTransition_a6yo5"), "LIdle", "RIdle", SubResource("AnimationNodeStateMachineTransition_hs3lr"), "RIdle", "LIdle", SubResource("AnimationNodeStateMachineTransition_v7yta"), "DIdle", "UIdle", SubResource("AnimationNodeStateMachineTransition_ycwjo"), "UIdle", "DIdle", SubResource("AnimationNodeStateMachineTransition_8le77")]
-graph_offset = Vector2(-87, -257)
+graph_offset = Vector2(20, -124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4jh5"]
 size = Vector2(90, 10)

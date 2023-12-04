@@ -12,7 +12,7 @@ var attacking:bool = true
 #Movement Variables
 @onready var navAgent = $NavigationAgent2D
 var target:Vector2
-var speed:int = 200
+@export var speed:float = 200
 var currentPos:Vector2
 var nextPos:Vector2
 
@@ -28,7 +28,7 @@ func move():
 	velocity = (nextPos - currentPos).normalized() * speed
 	
 	if(!attacking): #Prevents enemy from repeatedly hitting player
-		velocity *= -1
+		velocity *= -1ddd
 	
 	move_and_slide()
 
