@@ -17,8 +17,8 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_yxqfl")
 
 [node name="EnemyArea" type="Area2D" parent="."]

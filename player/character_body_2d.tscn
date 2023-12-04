@@ -322,8 +322,8 @@ parameters/RIdle/blend_position = Vector2(0, 0)
 parameters/UIdle/blend_position = Vector2(0, 0)
 
 [node name="Knife" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="KnifeCollision" type="CollisionShape2D" parent="Knife"]
 position = Vector2(68, 0)

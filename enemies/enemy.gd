@@ -36,7 +36,7 @@ func move():
 func hurt():
 	health -= 2
 	print("Enemy: ", health)
-	if(health <= 0): #breaks if hit after killed, won't be an issue once attack mechanics are improved
+	if(health <= 0):
 		print("Dead")
 		get_parent().remove_child(self)
 
