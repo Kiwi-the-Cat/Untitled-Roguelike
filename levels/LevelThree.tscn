@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cd8bdomu8khkc" path="res://enemies/enemy.tscn" id="4_2msrt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xrxh5"]
-vertices = PackedVector2Array(-417, -184, 255, -184, 255, 168, -417, 168)
+vertices = PackedVector2Array(245, 158, -407, 158, -407, -174, 245, -174)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-417, -184, 255, -184, 255, 168, -417, 168)])
 source_geometry_group_name = &"navigation_polygon_source_group"
