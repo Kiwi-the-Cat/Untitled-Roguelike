@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cd8bdomu8khkc" path="res://enemies/enemy.tscn" id="4_2msrt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xrxh5"]
-vertices = PackedVector2Array(245, 158, -407, 158, -407, -174, 245, -174)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-417, -184, 255, -184, 255, 168, -417, 168)])
+vertices = PackedVector2Array(153, 162, 253, 166, -415, 166, 69, 162, -263, 162, -347, 162, 25, 122, -59, 122, 69, 22, 25, 54, -263, 86, -59, 54, -415, -182, -347, 86, -43, -182, -43, -78, 9, -78, 253, -182, 153, 22, 9, -182)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2), PackedInt32Array(5, 4, 2), PackedInt32Array(6, 3, 4, 7), PackedInt32Array(8, 3, 6, 9), PackedInt32Array(7, 4, 10, 11), PackedInt32Array(5, 2, 12, 13), PackedInt32Array(10, 13, 12, 14, 15, 11), PackedInt32Array(9, 11, 15, 16, 8), PackedInt32Array(17, 1, 0, 18), PackedInt32Array(16, 19, 17, 18, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-425, -192, 263, -192, 263, 176, -425, 176), PackedVector2Array(-337, 96, -337, 152, -273, 152, -273, 96), PackedVector2Array(-49, 64, -49, 112, 15, 112, 15, 64), PackedVector2Array(79, 32, 79, 152, 143, 152, 143, 32), PackedVector2Array(-33, -184, -33, -88, -1, -88, -1, -184)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0itru"]
@@ -164,7 +164,7 @@ layer_1/name = "Obstacles"
 layer_1/tile_data = PackedInt32Array(589827, 1, 1, 524304, 262145, 0, 65548, 131073, 1, 524300, 1, 0, 786431, 1, 4, 720896, 1, 4, 720897, 1, 4, 720898, 1, 4, 720899, 1, 4, 720900, 1, 4, 720901, 1, 4, 720902, 1, 4, 720903, 1, 4, 720904, 1, 4, 720905, 1, 4, 720906, 1, 4, 720907, 1, 4, 720908, 1, 4, 720909, 1, 4, 720910, 1, 4, 720911, 1, 4, 720912, 1, 4, 720913, 1, 4, 720914, 1, 4, 720915, 1, 4, 720916, 1, 4, 720917, 1, 4, -65515, 1, 4, 21, 1, 4, 65557, 1, 4, 131093, 1, 4, 196629, 1, 4, 262165, 1, 4, 327701, 1, 4, 393237, 1, 4, 458773, 1, 4, 524309, 1, 4, 589845, 1, 4, 655381, 1, 4, -1, 1, 4, -65536, 1, 4, -65535, 1, 4, -65534, 1, 4, -65533, 1, 4, -65532, 1, 4, -65531, 1, 4, -65530, 1, 4, -65529, 1, 4, -65528, 1, 4, -65527, 1, 4, -65526, 1, 4, -65525, 1, 4, -65524, 1, 4, -65523, 1, 4, -65522, 1, 4, -65521, 1, 4, -65520, 1, 4, -65519, 1, 4, -65518, 1, 4, -65517, 1, 4, -65516, 1, 4, 65535, 1, 4, 131071, 1, 4, 196607, 1, 4, 262143, 1, 4, 327679, 1, 4, 393215, 1, 4, 458751, 1, 4, 524287, 1, 4, 589823, 1, 4, 655359, 1, 4, 720895, 1, 4)
 
 [node name="Enemy" parent="." instance=ExtResource("4_2msrt")]
-position = Vector2(406, 165)
+position = Vector2(416, 176)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
 

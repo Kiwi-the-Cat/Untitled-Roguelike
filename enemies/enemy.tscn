@@ -3,11 +3,10 @@
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_yxqfl"]
 [ext_resource type="Texture2D" uid="uid://bjy37sh85ccg5" path="res://icon.svg" id="2_ckfc4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f62o"]
-size = Vector2(34, 34)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebovi"]
+radius = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqq16"]
-size = Vector2(32, 32)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi0fh"]
 bg_color = Color(1, 0, 0, 1)
@@ -26,23 +25,23 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="EnemyAttack" type="CollisionShape2D" parent="EnemyArea"]
-shape = SubResource("RectangleShape2D_0f62o")
+shape = SubResource("CircleShape2D_ebovi")
 
 [node name="AttackTimer" type="Timer" parent="EnemyArea"]
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_tqq16")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+position = Vector2(-2.98023e-08, -2.98023e-08)
+scale = Vector2(0.15625, 0.15625)
 texture = ExtResource("2_ckfc4")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -17.0
-offset_top = 18.0
-offset_right = 17.0
-offset_bottom = 23.0
+offset_left = -11.0
+offset_top = 12.0
+offset_right = 11.0
+offset_bottom = 17.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_mi0fh")
 max_value = 20.0
 step = 1.0

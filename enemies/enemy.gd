@@ -21,7 +21,7 @@ func _process(delta):
 	$HealthBar.value = health
 
 func move():
-	target = player.position
+	target = Vector2(player.position.x, player.position.y + 10)
 	navAgent.set_target_position(target)
 	
 	currentPos = global_transform.origin
