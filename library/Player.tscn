@@ -1,35 +1,35 @@
 [gd_scene load_steps=13 format=3 uid="uid://d23jreqq811jd"]
 
-[ext_resource type="Texture2D" uid="uid://dg3ntb6yggw1h" path="res://assets/char_idle_left.png" id="1_tvvva"]
-[ext_resource type="Script" path="res://player/Player.gd" id="1_utirh"]
-[ext_resource type="Texture2D" uid="uid://cpxfu5yh2cfk3" path="res://assets/char_walk_left.png" id="2_m2m6a"]
+[ext_resource type="Script" path="res://player/Player.gd" id="1_airol"]
+[ext_resource type="Texture2D" uid="uid://dg3ntb6yggw1h" path="res://assets/char_idle_left.png" id="2_6yuf7"]
+[ext_resource type="Texture2D" uid="uid://cpxfu5yh2cfk3" path="res://assets/char_walk_left.png" id="3_tp2em"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48c63"]
 radius = 9.0
 height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsqn4"]
-atlas = ExtResource("1_tvvva")
+atlas = ExtResource("2_6yuf7")
 region = Rect2(0, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp1cs"]
-atlas = ExtResource("1_tvvva")
+atlas = ExtResource("2_6yuf7")
 region = Rect2(32, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnj2f"]
-atlas = ExtResource("2_m2m6a")
+atlas = ExtResource("3_tp2em")
 region = Rect2(0, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ls8uc"]
-atlas = ExtResource("2_m2m6a")
+atlas = ExtResource("3_tp2em")
 region = Rect2(32, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5nmk"]
-atlas = ExtResource("2_m2m6a")
+atlas = ExtResource("3_tp2em")
 region = Rect2(64, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6and5"]
-atlas = ExtResource("2_m2m6a")
+atlas = ExtResource("3_tp2em")
 region = Rect2(96, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aonil"]
@@ -67,7 +67,7 @@ animations = [{
 height = 68.0
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_utirh")
+script = ExtResource("1_airol")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 22)
@@ -75,6 +75,7 @@ shape = SubResource("CapsuleShape2D_48c63")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aonil")
+animation = &"idle"
 metadata/_edit_lock_ = true
 
 [node name="HurtBox" type="Area2D" parent="."]
