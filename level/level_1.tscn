@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgfxrhtn563oq"]
+[gd_scene load_steps=8 format=3 uid="uid://bgfxrhtn563oq"]
 
 [ext_resource type="Texture2D" uid="uid://cbi4i1dnq1dnv" path="res://assets/Grass_And_Ground_Tile_set.png" id="1_wk73p"]
 [ext_resource type="Texture2D" uid="uid://c7nic7cr6qmrv" path="res://assets/tree_rock_bush_sprites.png" id="2_4kjlr"]
 [ext_resource type="Texture2D" uid="uid://bk2lcp8d8ojuu" path="res://assets/muddy_broken_ship.png" id="3_80x52"]
+[ext_resource type="PackedScene" uid="uid://d23jreqq811jd" path="res://library/Player.tscn" id="4_4v3s3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldglv"]
 texture = ExtResource("1_wk73p")
@@ -168,3 +169,6 @@ layer_2/tile_data = PackedInt32Array(1179656, 131072, 2, 1048602, 131072, 3, 111
 position = Vector2(288, 273)
 scale = Vector2(1.375, 1.58333)
 texture = ExtResource("3_80x52")
+
+[node name="Player" parent="." instance=ExtResource("4_4v3s3")]
+position = Vector2(106, 105)
