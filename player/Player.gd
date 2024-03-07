@@ -25,7 +25,7 @@ func _physics_process(delta):
 
 
 func _process(delta):
-	print(velocity)
+	#print(velocity)
 	if (velocity.x < .1 and velocity.x > -.1) and (velocity.y < .1 and velocity.y > -.1):
 		playerSprite.play("idle")
 	elif (velocity.x > .1 or velocity.x < -.1) and (velocity.y > .1 or velocity.y < -.1):
