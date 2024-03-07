@@ -64,9 +64,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mw3b"]
+radius = 9.30894
 height = 68.0
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_airol")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
@@ -76,11 +78,12 @@ shape = SubResource("CapsuleShape2D_48c63")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aonil")
 animation = &"idle"
-metadata/_edit_lock_ = true
+frame_progress = 0.306744
 
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(0.954866, 1)
 shape = SubResource("CapsuleShape2D_3mw3b")
 debug_color = Color(0.933333, 0.215686, 0.352941, 0.419608)
 
