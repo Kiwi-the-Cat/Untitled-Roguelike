@@ -1,17 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpnsteinbo5cs"]
 
-[sub_resource type="TileSet" id="TileSet_uu1d2"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+[ext_resource type="Script" path="res://library/main.gd" id="1_ab546"]
 
 [node name="Main" type="Node2D"]
-
-[node name="BlankTileMap" type="TileMap" parent="."]
-position = Vector2(0, 4)
-tile_set = SubResource("TileSet_uu1d2")
-format = 2
-layer_0/name = "Terrain"
-layer_1/name = "Walls"
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = "Decoration"
-layer_2/tile_data = PackedInt32Array()
+script = ExtResource("1_ab546")
