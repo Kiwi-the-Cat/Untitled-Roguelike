@@ -2,6 +2,13 @@ extends CharacterBody2D
 
 @onready var player = get_parent().get_node("Player")
 
+#Combat variables
+@export var health:int = 20
+signal enemyAttack
+#var firstHit:bool = true #Fixes enemy instantly hitting on scene start
+var attacking:bool = true
+@onready var attackTimer:Timer = $Hitbox/AttackTimer
+
 #Movement Variables
 @onready var navAgent = $NavigationAgent2D
 var target:Vector2
@@ -20,4 +27,14 @@ func move():
 	nextPos = navAgent.get_next_path_position()
 	velocity = (nextPos - currentPos).normalized() * speed
 	
+	if(!attacking): #Prevents enemy from repeatedly hitting player
+		velocity *= -1
+	
 	move_and_slide()
+
+func _on_attack_timer_timeout():
+	attacking = true
+
+func _on_hitbox_area_entered(area):
+	attacking = false
+	attackTimer.start(0.5)
