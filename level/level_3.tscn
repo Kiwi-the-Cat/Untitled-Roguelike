@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgh1iffjuq3pj"]
+[gd_scene load_steps=10 format=3 uid="uid://cgh1iffjuq3pj"]
 
 [ext_resource type="Script" path="res://level/level_3.gd" id="1_cya2i"]
 [ext_resource type="Texture2D" uid="uid://cbi4i1dnq1dnv" path="res://assets/Grass_And_Ground_Tile_set.png" id="1_yxflg"]
 [ext_resource type="Texture2D" uid="uid://c7nic7cr6qmrv" path="res://assets/tree_rock_bush_sprites.png" id="2_jd481"]
 [ext_resource type="PackedScene" uid="uid://bt68687tfw0ca" path="res://player/Player.tscn" id="3_iqhyh"]
+[ext_resource type="PackedScene" uid="uid://d1bd4e7q7jh2p" path="res://enemies/enemy.tscn" id="5_d47jp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldglv"]
 texture = ExtResource("1_yxflg")
@@ -150,6 +151,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ldglv")
 sources/1 = SubResource("TileSetAtlasSource_nfebf")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_thgbi"]
+vertices = PackedVector2Array(202, 258, 1030, 262, 122, 262, 142, 258, 782, 178, 858, 178, 202, 230, 1030, 90, 858, 118, 122, 90, 782, 118, 142, 230)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 1, 0, 6), PackedInt32Array(7, 1, 5, 8), PackedInt32Array(9, 7, 8, 10), PackedInt32Array(3, 2, 9, 11), PackedInt32Array(6, 11, 9, 10, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1040, 80, 1040, 272, 112, 272, 112, 80), PackedVector2Array(152, 240, 152, 248, 192, 248, 192, 240), PackedVector2Array(792, 128, 792, 168, 848, 168, 848, 128)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="Level3" type="Node2D"]
 editor_description = "Level 3
 Combat Introduction
@@ -169,3 +176,12 @@ layer_2/tile_data = PackedInt32Array(2, 131072, 0, 589831, 131072, 5, 262153, 13
 
 [node name="Player" parent="." instance=ExtResource("3_iqhyh")]
 position = Vector2(38, 155)
+
+[node name="Enemy" parent="." instance=ExtResource("5_d47jp")]
+position = Vector2(642, 182)
+scale = Vector2(0.2, 0.2)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_thgbi")
