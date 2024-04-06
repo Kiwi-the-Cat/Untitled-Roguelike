@@ -80,6 +80,8 @@ animation = &"idle"
 frame_progress = 0.306744
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 scale = Vector2(0.954866, 1)

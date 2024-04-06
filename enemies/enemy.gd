@@ -16,8 +16,15 @@ var target:Vector2
 var currentPos:Vector2
 var nextPos:Vector2
 
-func _process(delta):
-	move()
+func _process(_delta):
+	if(attacking):
+		$AnimatedSprite2D.play("attack")
+	elif(health <= 0):
+		$AnimatedSprite2D.play("death")
+	else:
+		$AnimatedSprite2D.play("idle")
+	if(player != null):
+		move()
 
 func move():
 	target = Vector2(player.position.x, player.position.y)
@@ -35,6 +42,6 @@ func move():
 func _on_attack_timer_timeout():
 	attacking = true
 
-func _on_hitbox_area_entered(area):
+func _on_hitbox_area_entered(_area):
 	attacking = false
 	attackTimer.start(0.5)
