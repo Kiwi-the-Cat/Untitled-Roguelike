@@ -4,10 +4,9 @@ extends CharacterBody2D
 
 #Combat variables
 @export var health:int = 20
-signal enemyAttack
-#var firstHit:bool = true #Fixes enemy instantly hitting on scene start
-var attacking:bool = true
 @onready var attackTimer:Timer = $Hitbox/AttackTimer
+var attacking:bool = true
+var dying = false
 
 #Movement Variables
 @onready var navAgent = $NavigationAgent2D
@@ -17,14 +16,21 @@ var currentPos:Vector2
 var nextPos:Vector2
 
 func _process(_delta):
+	#Animations
 	if(attacking):
 		$AnimatedSprite2D.play("attack")
 	elif(health <= 0):
 		$AnimatedSprite2D.play("death")
+		dying = true
 	else:
 		$AnimatedSprite2D.play("idle")
-	if(player != null):
+	
+	#Other updates
+	$HealthBar.value = health
+	if(player != null && !dying):
 		move()
+	else:
+		attacking = false
 
 func move():
 	target = Vector2(player.position.x, player.position.y)
@@ -44,4 +50,8 @@ func _on_attack_timer_timeout():
 
 func _on_hitbox_area_entered(_area):
 	attacking = false
-	attackTimer.start(0.5)
+	attackTimer.start(1)
+
+func _on_animated_sprite_2d_animation_changed():
+	if(dying):
+		self.queue_free()

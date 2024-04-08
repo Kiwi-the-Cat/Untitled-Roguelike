@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d1bd4e7q7jh2p"]
+[gd_scene load_steps=27 format=3 uid="uid://d1bd4e7q7jh2p"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_hlivd"]
 [ext_resource type="Texture2D" uid="uid://csfkkhgj2nord" path="res://assets/slime_attack.png" id="2_2p043"]
@@ -154,7 +154,15 @@ radius = 83.006
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kusr"]
 radius = 74.027
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l168g"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="Enemy" type="CharacterBody2D"]
+position = Vector2(200, 200)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_hlivd")
@@ -162,8 +170,7 @@ script = ExtResource("1_hlivd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_iml0o")
-animation = &"idle"
-frame_progress = 0.748929
+animation = &"death"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -184,9 +191,12 @@ offset_left = -64.0
 offset_top = -72.0
 offset_right = 64.0
 offset_bottom = -61.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_l168g")
 max_value = 20.0
+step = 1.0
 rounded = true
 show_percentage = false
 
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Hitbox/AttackTimer" to="." method="_on_attack_timer_timeout"]
