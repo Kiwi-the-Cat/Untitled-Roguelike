@@ -6,23 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://xocnw8o402pa" path="res://assets/slime_hit.png" id="4_cha8e"]
 [ext_resource type="Texture2D" uid="uid://coydq20j4ocs" path="res://assets/slime_idle.png" id="5_3j27t"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0u2e0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx4ww"]
 atlas = ExtResource("2_2p043")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v26se"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuy38"]
 atlas = ExtResource("2_2p043")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_00g6x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho1uu"]
 atlas = ExtResource("2_2p043")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ecnk0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_akpjq"]
 atlas = ExtResource("2_2p043")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_08g25"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7xiw"]
 atlas = ExtResource("2_2p043")
 region = Rect2(128, 0, 32, 32)
 
@@ -78,23 +78,23 @@ region = Rect2(64, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0u2e0")
+"texture": SubResource("AtlasTexture_gx4ww")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v26se")
+"texture": SubResource("AtlasTexture_cuy38")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_00g6x")
+"texture": SubResource("AtlasTexture_ho1uu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ecnk0")
+"texture": SubResource("AtlasTexture_akpjq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_08g25")
+"texture": SubResource("AtlasTexture_f7xiw")
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -162,7 +162,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(200, 200)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_hlivd")
@@ -170,7 +169,8 @@ script = ExtResource("1_hlivd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_iml0o")
-animation = &"death"
+animation = &"attack"
+frame_progress = 0.231193
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -181,6 +181,8 @@ shape = SubResource("CircleShape2D_idl6e")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="AttackTimer" type="Timer" parent="Hitbox"]
+
+[node name="RetreatTimer" type="Timer" parent="Hitbox"]
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6kusr")
@@ -197,6 +199,6 @@ step = 1.0
 rounded = true
 show_percentage = false
 
-[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Hitbox/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Hitbox/RetreatTimer" to="." method="_on_retreat_timer_timeout"]
