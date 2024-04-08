@@ -5,7 +5,6 @@ const JUMP_VELOCITY : float = -400.0
 
 @onready var playerSprite : AnimatedSprite2D = $Sprite
 
-
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -23,9 +22,14 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
-
 func _process(_delta):
 	if (velocity.x < .1 and velocity.x > -.1) and (velocity.y < .1 and velocity.y > -.1):
 		playerSprite.play("idle")
 	elif (velocity.x > .1 or velocity.x < -.1) and (velocity.y > .1 or velocity.y < -.1):
 		playerSprite.play("walk")
+
+func setCameraLimits(top, bottom, left, right):
+	$Camera2D.limit_top = top
+	$Camera2D.limit_bottom = bottom
+	$Camera2D.limit_left = left
+	$Camera2D.limit_right = right
