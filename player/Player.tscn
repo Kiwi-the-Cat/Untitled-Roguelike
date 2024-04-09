@@ -4,10 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dg3ntb6yggw1h" path="res://assets/char_idle_left.png" id="2_6yuf7"]
 [ext_resource type="Texture2D" uid="uid://cpxfu5yh2cfk3" path="res://assets/char_walk_left.png" id="3_tp2em"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48c63"]
-radius = 9.0
-height = 20.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsqn4"]
 atlas = ExtResource("2_6yuf7")
 region = Rect2(0, 0, 32, 64)
@@ -67,27 +63,31 @@ animations = [{
 radius = 9.30894
 height = 68.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48c63"]
+radius = 9.0
+height = 20.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_airol")
-
-[node name="MovementHurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 25)
-shape = SubResource("CapsuleShape2D_48c63")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aonil")
 animation = &"idle"
 frame_progress = 0.306744
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="CombatHurtbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatHurtbox"]
 position = Vector2(0, 3)
 scale = Vector2(0.954866, 1)
 shape = SubResource("CapsuleShape2D_3mw3b")
 debug_color = Color(0.933333, 0.215686, 0.352941, 0.419608)
+
+[node name="MovementHurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
+shape = SubResource("CapsuleShape2D_48c63")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)

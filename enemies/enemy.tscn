@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d1bd4e7q7jh2p"]
+[gd_scene load_steps=28 format=3 uid="uid://d1bd4e7q7jh2p"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_hlivd"]
 [ext_resource type="Texture2D" uid="uid://csfkkhgj2nord" path="res://assets/slime_attack.png" id="2_2p043"]
@@ -151,6 +151,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_idl6e"]
 radius = 83.006
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrptc"]
+radius = 73.171
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kusr"]
 radius = 74.027
 
@@ -162,15 +165,12 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 5
-collision_mask = 5
 script = ExtResource("1_hlivd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_iml0o")
 animation = &"attack"
-frame_progress = 0.231193
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -182,9 +182,14 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="AttackTimer" type="Timer" parent="Hitbox"]
 
-[node name="RetreatTimer" type="Timer" parent="Hitbox"]
+[node name="CombatHurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatHurtbox"]
+shape = SubResource("CircleShape2D_xrptc")
+
+[node name="MovementHurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6kusr")
 debug_color = Color(0.933333, 0.215686, 0.352941, 0.419608)
 
@@ -199,6 +204,6 @@ step = 1.0
 rounded = true
 show_percentage = false
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Hitbox/AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="Hitbox/RetreatTimer" to="." method="_on_retreat_timer_timeout"]
