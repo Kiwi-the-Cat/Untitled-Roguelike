@@ -28,11 +28,8 @@ func _process(_delta):
 	elif (velocity.x > 0 or velocity.x < 0) or (velocity.y > .1 or velocity.y < -.1):
 		playerSprite.play("walk")
 	
-
-	if ((rad_to_deg(get_angle_to(get_global_mouse_position())) > -90) && (rad_to_deg(get_angle_to(get_global_mouse_position())) < 90)):
-		$Sprite.flip_h = true
-	else:
-		$Sprite.flip_h = false
+	var mouseAngle = rad_to_deg(get_angle_to(get_global_mouse_position()))
+	$Sprite.flip_h = mouseAngle > -90 && mouseAngle < 90
 
 func setCameraLimits(top, bottom, left, right):
 	$Camera2D.limit_top = top

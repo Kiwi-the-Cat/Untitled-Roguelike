@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var player:CharacterBody2D = get_parent().get_node("Player")
-@onready var sprite:AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite:AnimatedSprite2D = $Sprite
 @onready var spriteFrames:SpriteFrames = sprite.sprite_frames
 
 #Combat variables

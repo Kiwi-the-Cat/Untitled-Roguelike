@@ -1,8 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://bt68687tfw0ca"]
+[gd_scene load_steps=18 format=3 uid="uid://bt68687tfw0ca"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_airol"]
 [ext_resource type="Texture2D" uid="uid://dg3ntb6yggw1h" path="res://assets/char_idle_left.png" id="2_6yuf7"]
+[ext_resource type="Texture2D" uid="uid://vesq74grw3dk" path="res://assets/char_atk_side.png" id="2_s7k0p"]
 [ext_resource type="Texture2D" uid="uid://cpxfu5yh2cfk3" path="res://assets/char_walk_left.png" id="3_tp2em"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf63g"]
+atlas = ExtResource("2_s7k0p")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjw25"]
+atlas = ExtResource("2_s7k0p")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt0y0"]
+atlas = ExtResource("2_s7k0p")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpbki"]
+atlas = ExtResource("2_s7k0p")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsqn4"]
 atlas = ExtResource("2_6yuf7")
@@ -30,6 +47,23 @@ region = Rect2(96, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aonil"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf63g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjw25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt0y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpbki")
+}],
+"loop": true,
+"name": &"attack_side",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rsqn4")
@@ -72,8 +106,7 @@ script = ExtResource("1_airol")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aonil")
-animation = &"idle"
-frame_progress = 0.306744
+animation = &"attack_side"
 
 [node name="CombatHurtbox" type="Area2D" parent="."]
 collision_layer = 2
