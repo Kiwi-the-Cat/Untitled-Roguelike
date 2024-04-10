@@ -174,14 +174,13 @@ layer_1/tile_data = PackedInt32Array(327679, 1, 4, 393215, 1, 4, 458751, 1, 4, 2
 layer_2/name = "Decoration"
 layer_2/tile_data = PackedInt32Array(2, 131072, 0, 589831, 131072, 5, 262153, 131072, 2, 131085, 131072, 4, 32, 131072, 4, 131105, 131072, 5, 65571, 131072, 2, 131107, 131072, 1, 458757, 131073, 0, 458767, 262145, 0, 25, 1, 3, 262169, 1, 1, 458785, 131072, 0)
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMapLvl3"]
+position = Vector2(0, -4)
+navigation_polygon = SubResource("NavigationPolygon_thgbi")
+
 [node name="Player" parent="." instance=ExtResource("3_iqhyh")]
 position = Vector2(38, 155)
 
 [node name="Enemy" parent="." instance=ExtResource("5_d47jp")]
-position = Vector2(642, 182)
+position = Vector2(640, 184)
 scale = Vector2(0.2, 0.2)
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_thgbi")

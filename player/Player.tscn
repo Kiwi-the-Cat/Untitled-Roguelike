@@ -107,6 +107,7 @@ script = ExtResource("1_airol")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aonil")
 animation = &"attack_side"
+frame_progress = 0.570587
 
 [node name="CombatHurtbox" type="Area2D" parent="."]
 collision_layer = 2

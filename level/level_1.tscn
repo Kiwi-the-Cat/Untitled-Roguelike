@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgfxrhtn563oq"]
+[gd_scene load_steps=12 format=3 uid="uid://bgfxrhtn563oq"]
 
 [ext_resource type="Script" path="res://level/level_1.gd" id="1_2jtp1"]
 [ext_resource type="Texture2D" uid="uid://cbi4i1dnq1dnv" path="res://assets/Grass_And_Ground_Tile_set.png" id="1_wk73p"]
 [ext_resource type="Texture2D" uid="uid://c7nic7cr6qmrv" path="res://assets/tree_rock_bush_sprites.png" id="2_4kjlr"]
 [ext_resource type="Texture2D" uid="uid://bk2lcp8d8ojuu" path="res://assets/muddy_broken_ship.png" id="3_80x52"]
 [ext_resource type="PackedScene" uid="uid://bt68687tfw0ca" path="res://player/Player.tscn" id="4_4v3s3"]
+[ext_resource type="Texture2D" uid="uid://bfrithvvvxgi0" path="res://assets/water.png" id="4_8vacg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldglv"]
 texture = ExtResource("1_wk73p")
@@ -145,11 +146,32 @@ texture_region_size = Vector2i(32, 32)
 0:4/0/physics_layer_0/angular_velocity = 0.0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vns7r"]
+texture = ExtResource("4_8vacg")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
 [sub_resource type="TileSet" id="TileSet_3yroe"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ldglv")
 sources/1 = SubResource("TileSetAtlasSource_nfebf")
+sources/2 = SubResource("TileSetAtlasSource_vns7r")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ux7rc"]
 size = Vector2(44.5, 46.5)

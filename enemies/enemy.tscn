@@ -170,7 +170,7 @@ script = ExtResource("1_hlivd")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_iml0o")
-animation = &"attack"
+animation = &"hurt"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -203,6 +203,8 @@ max_value = 20.0
 step = 1.0
 rounded = true
 show_percentage = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="frame_changed" from="Sprite" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
