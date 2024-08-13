@@ -9,6 +9,7 @@ extends CharacterBody2D
 var health : int = 20
 var attacking : bool = true
 var state : String = "idle"
+signal death
 
 #Movement Variables
 @onready var navAgent : NavigationAgent2D = $NavigationAgent2D
@@ -58,7 +59,9 @@ func _on_hitbox_area_entered(area):
 		attackTimer.start(spriteFrames.get_frame_count("attack") / spriteFrames.get_animation_speed("attack"))
 		attacking = false
 		state = "attack"
+		health -= 10
 
 func _on_animated_sprite_2d_frame_changed():
 	if(state == "death" && sprite.frame == 5):
+		death.emit()
 		self.queue_free()

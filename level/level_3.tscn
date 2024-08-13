@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgh1iffjuq3pj"]
+[gd_scene load_steps=7 format=3 uid="uid://cgh1iffjuq3pj"]
 
 [ext_resource type="Script" path="res://level/level_3.gd" id="1_cya2i"]
 [ext_resource type="TileSet" uid="uid://chfwstblemhbi" path="res://level/TileSet.tres" id="2_2br0h"]
@@ -10,6 +10,9 @@ vertices = PackedVector2Array(774, 186, 866, 186, 1030, 262, 210, 262, 210, 222,
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 2, 1, 6), PackedInt32Array(7, 5, 6, 8), PackedInt32Array(9, 10, 11, 7), PackedInt32Array(4, 9, 7, 8, 0)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1040, 80, 1040, 272, 112, 272, 112, 80), PackedVector2Array(144, 232, 144, 256, 200, 256, 200, 232), PackedVector2Array(784, 120, 784, 176, 856, 176, 856, 120)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5oew"]
+size = Vector2(220, 220)
 
 [node name="Level3" type="Node2D"]
 editor_description = "Level 3
@@ -38,3 +41,18 @@ position = Vector2(38, 155)
 [node name="Enemy" parent="." instance=ExtResource("5_d47jp")]
 position = Vector2(640, 184)
 scale = Vector2(0.2, 0.2)
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(1120, 184)
+scale = Vector2(0.2, 0.2)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(-10.0005, -10)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_n5oew")
+disabled = true
+
+[connection signal="death" from="Enemy" to="." method="_on_enemy_death"]
+[connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
