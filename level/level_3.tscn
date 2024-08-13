@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://d1bd4e7q7jh2p" path="res://enemies/enemy.tscn" id="5_d47jp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_thgbi"]
-vertices = PackedVector2Array(202, 258, 1030, 262, 122, 262, 142, 258, 782, 178, 858, 178, 202, 230, 1030, 90, 858, 118, 122, 90, 782, 118, 142, 230)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 1, 0, 6), PackedInt32Array(7, 1, 5, 8), PackedInt32Array(9, 7, 8, 10), PackedInt32Array(3, 2, 9, 11), PackedInt32Array(6, 11, 9, 10, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1040, 80, 1040, 272, 112, 272, 112, 80), PackedVector2Array(152, 240, 152, 248, 192, 248, 192, 240), PackedVector2Array(792, 128, 792, 168, 848, 168, 848, 128)])
+vertices = PackedVector2Array(774, 186, 866, 186, 1030, 262, 210, 262, 210, 222, 1030, 90, 866, 110, 122, 90, 774, 110, 134, 222, 134, 262, 122, 262)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 2, 1, 6), PackedInt32Array(7, 5, 6, 8), PackedInt32Array(9, 10, 11, 7), PackedInt32Array(4, 9, 7, 8, 0)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1040, 80, 1040, 272, 112, 272, 112, 80), PackedVector2Array(144, 232, 144, 256, 200, 256, 200, 232), PackedVector2Array(784, 120, 784, 176, 856, 176, 856, 120)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Level3" type="Node2D"]
