@@ -17,7 +17,7 @@ signal death
 var target : Vector2
 var currentPos : Vector2
 var nextPos : Vector2
-var detect_range : int = 300
+var detect_range : int = 200
 
 func _process(_delta):
 	$HealthBar.value = health
