@@ -8,6 +8,13 @@ func _ready():
 func _process(delta):
 	pass
 
-func randomLevel(zone, enter_direction):
-	var level_path:String = "res://level/" + zone + "/" + enter_direction + "_" + randi_range(1, 2) + ".tscn"
-	get_tree().change_scene_to_file(level_path)
+func get_next_level(area:String):
+	var direction:String = ""
+	match(randi_range(0, 1)):
+		0:
+			direction = "bottom_"
+		_:
+			direction = "left"
+			
+	var level_path:String = "res://level/" + area + "/" + direction + str(randi_range(1, 3)) + ".tscn"
+	return level_path

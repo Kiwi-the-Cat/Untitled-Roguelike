@@ -50,7 +50,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 position = Vector2(-10.0005, -10)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_n5oew")
 disabled = true
 

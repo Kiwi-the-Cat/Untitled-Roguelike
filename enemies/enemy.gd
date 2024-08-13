@@ -17,6 +17,7 @@ signal death
 var target : Vector2
 var currentPos : Vector2
 var nextPos : Vector2
+var detect_range : int = 300
 
 func _process(_delta):
 	$HealthBar.value = health
@@ -31,20 +32,21 @@ func _process(_delta):
 		sprite.play(state)
 
 func move():
-	target = player.position
-	navAgent.set_target_position(target)
-	
-	currentPos = global_transform.origin
-	nextPos = navAgent.get_next_path_position()
-	velocity = (nextPos - currentPos).normalized() * speed
-	
-	if(state == "attack"): #Pause for attack animation to play
-		velocity *= 0
-	elif(!attacking): #Prevents enemy from repeatedly hitting player
-		velocity *= -1
-	
-	sprite.flip_h = target.x > self.position.x
-	move_and_slide()
+	if(abs(player.position.x - position.x) < detect_range && abs(player.position.y - position.y) < detect_range):
+		target = player.position
+		navAgent.set_target_position(target)
+		
+		currentPos = global_transform.origin
+		nextPos = navAgent.get_next_path_position()
+		velocity = (nextPos - currentPos).normalized() * speed
+		
+		if(state == "attack"): #Pause for attack animation to play
+			velocity *= 0
+		elif(!attacking): #Prevents enemy from repeatedly hitting player
+			velocity *= -1
+		
+		sprite.flip_h = target.x > self.position.x
+		move_and_slide()
 
 func _on_attack_timer_timeout():
 	match(state):
