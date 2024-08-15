@@ -29,9 +29,6 @@ position = Vector2(288, 273)
 scale = Vector2(1.375, 1.58333)
 texture = ExtResource("3_80x52")
 
-[node name="Player" parent="." instance=ExtResource("4_4v3s3")]
-position = Vector2(106, 105)
-
 [node name="Exit" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
@@ -39,5 +36,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 position = Vector2(1129.25, 563.75)
 shape = SubResource("RectangleShape2D_ux7rc")
+
+[node name="Player" parent="." instance=ExtResource("4_4v3s3")]
+position = Vector2(106, 105)
 
 [connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]

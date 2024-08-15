@@ -33,6 +33,8 @@ navigation_polygon = SubResource("NavigationPolygon_krs4o")
 
 [node name="Exit1" type="Area2D" parent="."]
 position = Vector2(752, 16)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit1"]
 position = Vector2(0, 7)
@@ -41,6 +43,8 @@ disabled = true
 
 [node name="Exit2" type="Area2D" parent="."]
 position = Vector2(752, 16)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit2"]
 position = Vector2(404, 416)
@@ -57,3 +61,8 @@ scale = Vector2(0.2, 0.2)
 
 [node name="Player" parent="." instance=ExtResource("4_8hut3")]
 position = Vector2(112, 584)
+
+[connection signal="area_entered" from="Exit1" to="." method="_on_exit_1_area_entered"]
+[connection signal="area_entered" from="Exit2" to="." method="_on_exit_2_area_entered"]
+[connection signal="death" from="Enemy" to="." method="_on_enemy_death"]
+[connection signal="death" from="Enemy2" to="." method="_on_enemy_death"]

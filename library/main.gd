@@ -9,5 +9,5 @@ func _process(delta):
 	pass
 
 func get_next_level(area:String, direction:String):
-	var level_path:String = "res://level/" + area + "/" + direction + "_" + str(randi_range(1, 3)) + ".tscn"
+	var level_path:String = "res://level/" + area + "/" + direction + "_" + str(randi_range(1, 1)) + ".tscn"
 	return level_path

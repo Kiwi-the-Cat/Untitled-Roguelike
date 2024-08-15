@@ -7,4 +7,8 @@ func _ready():
 func _on_enemy_death():
 	enemyCount -= 1
 	if(enemyCount <= 0):
-		pass
+		$Exit/CollisionShape2D.disabled = false
+
+
+func _on_exit_area_entered(area):
+	get_tree().change_scene_to_file("res://level/Area_1/bottom_" + str(randi_range(1, 2)) + ".tscn")

@@ -35,13 +35,6 @@ layer_2/tile_data = PackedInt32Array(2, 131072, 0, 589831, 131072, 5, 262153, 13
 position = Vector2(0, -4)
 navigation_polygon = SubResource("NavigationPolygon_thgbi")
 
-[node name="Player" parent="." instance=ExtResource("3_iqhyh")]
-position = Vector2(38, 155)
-
-[node name="Enemy" parent="." instance=ExtResource("5_d47jp")]
-position = Vector2(640, 184)
-scale = Vector2(0.2, 0.2)
-
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2(1120, 184)
 scale = Vector2(0.2, 0.2)
@@ -53,5 +46,12 @@ position = Vector2(-10.0005, -10)
 shape = SubResource("RectangleShape2D_n5oew")
 disabled = true
 
-[connection signal="death" from="Enemy" to="." method="_on_enemy_death"]
+[node name="Player" parent="." instance=ExtResource("3_iqhyh")]
+position = Vector2(38, 155)
+
+[node name="Enemy" parent="." instance=ExtResource("5_d47jp")]
+position = Vector2(640, 184)
+scale = Vector2(0.2, 0.2)
+
 [connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
+[connection signal="death" from="Enemy" to="." method="_on_enemy_death"]
