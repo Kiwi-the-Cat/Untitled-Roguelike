@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://chfwstblemhbi"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://chfwstblemhbi"]
 
 [ext_resource type="Texture2D" uid="uid://cbi4i1dnq1dnv" path="res://assets/Grass_And_Ground_Tile_set.png" id="1_o37l3"]
 [ext_resource type="Texture2D" uid="uid://c7nic7cr6qmrv" path="res://assets/tree_rock_bush_sprites.png" id="2_60oov"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://db3rd6c5l1id5" path="res://assets/campsite.png" id="4_5oquc"]
 [ext_resource type="Texture2D" uid="uid://bpfym1b6ch1id" path="res://assets/tents.png" id="5_fxoia"]
 [ext_resource type="Texture2D" uid="uid://bdmykt8wr4t5g" path="res://assets/grass_edges_tileset.png" id="6_h355h"]
+[ext_resource type="Texture2D" uid="uid://w0fg1j5pl0xf" path="res://assets/watterfaddle_middle.png" id="7_x8hx1"]
+[ext_resource type="Texture2D" uid="uid://mf7p1vwj7uu4" path="res://assets/water_edge.png" id="8_uld8c"]
+[ext_resource type="Texture2D" uid="uid://c5iakliy5i0oa" path="res://assets/watterfaddle_bottom.png" id="9_vcvsa"]
+[ext_resource type="Texture2D" uid="uid://7kdpx7jl5vrl" path="res://assets/watterfaddle_top.png" id="10_e1ynr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldglv"]
 texture = ExtResource("1_o37l3")
@@ -81,10 +85,12 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vns7r"]
 texture = ExtResource("3_4vc75")
 texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 0.25
+0:0/animation_frame_1/duration = 0.25
+0:0/animation_frame_2/duration = 0.25
+0:0/animation_frame_3/duration = 0.25
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fp3tp"]
 texture = ExtResource("4_5oquc")
@@ -146,6 +152,55 @@ texture_region_size = Vector2i(32, 32)
 6:5/0 = 0
 6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -16, 16, -16, 16, 16, -16, 16, -16, 0, 0, 0)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ov4ra"]
+texture = ExtResource("7_x8hx1")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 3
+0:0/animation_frame_0/duration = 0.25
+0:0/animation_frame_1/duration = 0.25
+0:0/animation_frame_2/duration = 0.25
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2aji3"]
+texture = ExtResource("8_uld8c")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:1/0 = 0
+1:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+2:4/0 = 0
+2:5/0 = 0
+1:5/0 = 0
+0:5/0 = 0
+0:4/0 = 0
+0:3/0 = 0
+0:2/0 = 0
+1:1/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+1:4/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_17otg"]
+texture = ExtResource("9_vcvsa")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 3
+0:0/animation_frame_0/duration = 0.25
+0:0/animation_frame_1/duration = 0.25
+0:0/animation_frame_2/duration = 0.25
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iu6lb"]
+texture = ExtResource("10_e1ynr")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 3
+0:0/animation_frame_0/duration = 0.25
+0:0/animation_frame_1/duration = 0.25
+0:0/animation_frame_2/duration = 0.25
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -155,3 +210,7 @@ sources/2 = SubResource("TileSetAtlasSource_vns7r")
 sources/3 = SubResource("TileSetAtlasSource_fp3tp")
 sources/4 = SubResource("TileSetAtlasSource_qdwiv")
 sources/5 = SubResource("TileSetAtlasSource_h2umv")
+sources/6 = SubResource("TileSetAtlasSource_ov4ra")
+sources/7 = SubResource("TileSetAtlasSource_2aji3")
+sources/8 = SubResource("TileSetAtlasSource_17otg")
+sources/9 = SubResource("TileSetAtlasSource_iu6lb")
