@@ -56,12 +56,12 @@ func _on_attack_timer_timeout():
 		"idle":
 			attacking = true
 
-func _on_hitbox_area_entered(area):
+func _on_hitbox_area_entered(area): #Enemy hits player
 	if(area.get_parent().get_name() == "Player"): #Ensures that enemies don't collide with each other's hitboxes
 		attackTimer.start(spriteFrames.get_frame_count("attack") / spriteFrames.get_animation_speed("attack"))
 		attacking = false
 		state = "attack"
-		health -= 10
+		health -= 10 #Used for debugging, remove for actual game
 
 func _on_animated_sprite_2d_frame_changed():
 	if(state == "death" && sprite.frame == 5):
