@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bm6gsovlhwl1p"]
+[gd_scene load_steps=10 format=4 uid="uid://bm6gsovlhwl1p"]
 
 [ext_resource type="TileSet" uid="uid://chfwstblemhbi" path="res://level/TileSet.tres" id="1_kjs2d"]
 [ext_resource type="Script" path="res://level/Area_1/left_2.gd" id="1_oebw5"]
@@ -19,6 +19,9 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_n24fc"]
 sources/0 = SubResource("TileSetAtlasSource_uni0o")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hq3j"]
+size = Vector2(34, 48)
 
 [node name="Left2" type="Node2D"]
 script = ExtResource("1_oebw5")
@@ -57,3 +60,11 @@ scale = Vector2(0.2, 0.2)
 [node name="Enemy_Cover" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAPAB0AAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_n24fc")
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(1232, 336)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_4hq3j")
+disabled = true

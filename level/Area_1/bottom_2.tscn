@@ -34,7 +34,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_hmasw"]
 sources/0 = SubResource("TileSetAtlasSource_sxolq")
 
-[node name="Bottom_1" type="Node2D"]
+[node name="Bottom2" type="Node2D"]
 script = ExtResource("1_fjamo")
 
 [node name="Terrain" type="TileMapLayer" parent="."]

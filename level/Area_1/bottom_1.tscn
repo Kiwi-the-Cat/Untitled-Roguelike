@@ -14,7 +14,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(24, 88, 24, -160, 296, -160, 296, 0, 760, 0, 760, -128, 1072, -128, 1072, -176, 744, -176, 504, -416, 504, -480, 664, -480, 664, -584, 616, -584, 616, -528, 456, -528, 456, -432, 296, -432, 296, -208, -24, -208, -24, 88), PackedVector2Array(344, -48, 344, -384, 440, -384, 712, -104, 712, -48)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[node name="Bottom_1" type="Node2D"]
+[node name="Bottom1" type="Node2D"]
 script = ExtResource("1_f5upj")
 
 [node name="Terrain" type="TileMapLayer" parent="."]

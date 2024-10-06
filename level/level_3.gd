@@ -1,13 +1,13 @@
 extends Node2D
-@onready var enemyCount:int = 1
 
 func _ready():
 	$Player.setCameraLimits(-60, 420, 0, 1150)
+	get_parent().set_exits([$Exit/CollisionShape2D])
+	get_parent().set_enemy_count(1)
 
 func _on_enemy_death():
-	enemyCount -= 1
-	if(enemyCount <= 0):
-		$Exit/CollisionShape2D.disabled = false
+	get_parent().enemy_death()
 
 func _on_exit_area_entered(area):
-	get_tree().change_scene_to_file("res://level/level_4.tscn")
+	if(area.get_parent().name == "Player"):
+		get_parent().change_level("res://level/level_4.tscn")

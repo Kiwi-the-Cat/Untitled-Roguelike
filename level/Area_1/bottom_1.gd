@@ -1,17 +1,17 @@
 extends Node2D
-@onready var enemyCount:int = 2
 
 func _ready():
 	$Player.setCameraLimits(0, 670, 0, 1180)
+	get_parent().set_exits([$Exit/CollisionShape2D, $Exit2/CollisionShape2D])
+	get_parent().set_enemy_count(2)
 
 func _on_enemy_death():
-	enemyCount -= 1
-	if(enemyCount <= 0):
-		$Exit1/CollisionShape2D.disabled = false
-		$Exit2/CollisionShape2D.disabled = false
+	get_parent().enemy_death()
 
 func _on_exit_1_area_entered(area):
-	get_tree().change_scene_to_file("res://level/Area_1/bottom_" + str(randi_range(1, 2)) + ".tscn")
+	if(area.get_parent().name == "Player"):
+		get_parent().change_level("Area_1_Bottom")
 
 func _on_exit_2_area_entered(area):
-	get_tree().change_scene_to_file("res://level/Area_1/left_" + str(randi_range(1, 1)) + ".tscn")
+	if(area.get_parent().name == "Player"):
+		get_parent().change_level("Area_1_Left")
