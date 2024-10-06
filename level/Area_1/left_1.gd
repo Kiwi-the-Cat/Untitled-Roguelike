@@ -12,7 +12,7 @@ func _on_enemy_death():
 
 
 func _on_exit_1_area_entered(area):
-	get_tree().change_scene_to_file("res://level/Area_1/left_" + str(randi_range(1, 1)) + ".tscn")
+	get_tree().change_scene_to_file("res://level/Area_1/left_" + str(randi_range(1, 2)) + ".tscn")
 
 
 func _on_exit_2_area_entered(area):
