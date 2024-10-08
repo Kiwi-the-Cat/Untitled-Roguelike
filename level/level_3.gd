@@ -9,5 +9,5 @@ func _on_enemy_death():
 	get_parent().enemy_death()
 
 func _on_exit_area_entered(area):
-	if(area.get_parent().name == "Player"):
+	if(get_parent() != null):
 		get_parent().change_level("res://level/level_4.tscn")
