@@ -42,4 +42,4 @@ shape = SubResource("RectangleShape2D_7eg3j")
 [node name="Player" parent="." instance=ExtResource("4_ducjs")]
 position = Vector2(33, 247)
 
-[connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

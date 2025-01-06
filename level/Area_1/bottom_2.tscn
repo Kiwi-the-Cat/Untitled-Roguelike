@@ -85,4 +85,4 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAASABMAAAAAAAAAAAAdAAkAAAAAAAMAAAA=")
 tile_set = SubResource("TileSet_hmasw")
 
-[connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

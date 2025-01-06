@@ -71,7 +71,4 @@ disabled = true
 [node name="Player" parent="." instance=ExtResource("2_x0f8p")]
 position = Vector2(32, 320)
 
-[connection signal="death" from="Enemy" to="." method="_on_enemy_death"]
-[connection signal="death" from="Enemy2" to="." method="_on_enemy_death"]
-[connection signal="death" from="Enemy3" to="." method="_on_enemy_death"]
-[connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

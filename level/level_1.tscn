@@ -47,4 +47,4 @@ shape = SubResource("RectangleShape2D_ux7rc")
 [node name="Player" parent="." instance=ExtResource("4_4v3s3")]
 position = Vector2(106, 105)
 
-[connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

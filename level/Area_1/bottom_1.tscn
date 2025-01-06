@@ -67,7 +67,5 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(840, 552)
 scale = Vector2(0.2, 0.2)
 
-[connection signal="area_entered" from="Exit1" to="." method="_on_exit_1_area_entered"]
-[connection signal="area_entered" from="Exit2" to="." method="_on_exit_2_area_entered"]
-[connection signal="death" from="Enemy" to="." method="_on_enemy_death"]
-[connection signal="death" from="Enemy2" to="." method="_on_enemy_death"]
+[connection signal="body_entered" from="Exit1" to="." method="_on_exit_1_body_entered"]
+[connection signal="body_entered" from="Exit2" to="." method="_on_exit_2_body_entered"]

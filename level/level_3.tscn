@@ -59,4 +59,4 @@ navigation_polygon = SubResource("NavigationPolygon_thgbi")
 position = Vector2(640, 184)
 scale = Vector2(0.2, 0.2)
 
-[connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

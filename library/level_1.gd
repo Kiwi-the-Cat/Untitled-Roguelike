@@ -5,6 +5,6 @@ func _ready():
 	get_parent().set_exits([$Exit/CollisionShape2D])
 	get_parent().set_enemy_count(0)
 
-func _on_exit_area_entered(area):
+func _on_exit_body_entered(body: Node2D) -> void:
 	if(get_parent() != null):
 		get_parent().change_level("res://level/level_2.tscn")

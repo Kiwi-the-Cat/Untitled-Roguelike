@@ -9,7 +9,7 @@ func _ready():
 #func _on_enemy_death():
 	#if (get_parent() != null):
 		#get_parent().enemy_death()
-#
-#func _on_exit_area_entered(area):
-	#if(get_parent() != null):
-		#get_parent().change_level("res://level/level_4.tscn")
+	
+func _on_exit_body_entered(body: Node2D) -> void:
+	if(get_parent() != null):
+		get_parent().change_level("res://level/level_4.tscn")

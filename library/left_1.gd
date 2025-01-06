@@ -8,10 +8,10 @@ func _ready():
 func _on_enemy_death():
 	get_parent().enemy_death()
 
-func _on_exit_1_area_entered(area):
+func _on_exit_1_body_entered(area):
 	if(get_parent() != null):
 		get_parent().change_level("Area_1_Left")
 
-func _on_exit_2_area_entered(area):
+func _on_exit_2_body_entered(area):
 	if(get_parent() != null):
 		get_parent().change_level("Area_1_Bottom")
