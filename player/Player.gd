@@ -32,6 +32,7 @@ func _process(_delta):
 	$Sprite.flip_h = mouseAngle > -90 && mouseAngle < 90
 
 func setCameraLimits(top, bottom, left, right):
+	$Camera2D.zoom = Vector2(1.5, 1.5) #Sets a default zoom in case we want to do level-specific things
 	$Camera2D.limit_top = top
 	$Camera2D.limit_bottom = bottom
 	$Camera2D.limit_left = left
