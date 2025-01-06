@@ -93,15 +93,16 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mw3b"]
-radius = 9.30894
-height = 68.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48c63"]
 radius = 9.0
 height = 20.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqjwa"]
+height = 48.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_airol")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -109,17 +110,7 @@ sprite_frames = SubResource("SpriteFrames_aonil")
 animation = &"attack_side"
 frame_progress = 0.570587
 
-[node name="CombatHurtbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatHurtbox"]
-position = Vector2(0, 3)
-scale = Vector2(0.954866, 1)
-shape = SubResource("CapsuleShape2D_3mw3b")
-debug_color = Color(0.933333, 0.215686, 0.352941, 0.419608)
-
-[node name="MovementHurtbox" type="CollisionShape2D" parent="."]
+[node name="MovementHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 25)
 shape = SubResource("CapsuleShape2D_48c63")
 
@@ -131,3 +122,9 @@ limit_right = 1150
 limit_bottom = 640
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+shape = SubResource("CapsuleShape2D_vqjwa")
+debug_color = Color(0.763631, 0.391308, 0.586205, 0.42)

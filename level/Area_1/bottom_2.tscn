@@ -86,6 +86,3 @@ tile_map_data = PackedByteArray("AAASABMAAAAAAAAAAAAdAAkAAAAAAAMAAAA=")
 tile_set = SubResource("TileSet_hmasw")
 
 [connection signal="area_entered" from="Exit" to="." method="_on_exit_area_entered"]
-[connection signal="death" from="Enemy" to="." method="_on_enemy_death"]
-[connection signal="death" from="Enemy2" to="." method="_on_enemy_death"]
-[connection signal="death" from="Enemy3" to="." method="_on_enemy_death"]
