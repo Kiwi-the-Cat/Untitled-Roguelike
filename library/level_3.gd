@@ -2,9 +2,9 @@ extends Node2D
 
 func _ready():
 	$Player.setCameraLimits(-60, 420, 0, 1150)
-	#if (get_parent() != null):
-		#get_parent().set_exits([$Exit/CollisionShape2D])
-		#get_parent().set_enemy_count(1)
+	if (get_parent() != null):
+		get_parent().set_exits([$Exit/CollisionShape2D])
+		get_parent().set_enemy_count(1)
 
 #func _on_enemy_death():
 	#if (get_parent() != null):
