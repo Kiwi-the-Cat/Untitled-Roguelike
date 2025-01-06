@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://d1bd4e7q7jh2p"]
 
-[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_hlivd"]
+[ext_resource type="Script" path="res://library/enemy.gd" id="1_hlivd"]
 [ext_resource type="Texture2D" uid="uid://csfkkhgj2nord" path="res://assets/slime_attack.png" id="2_2p043"]
 [ext_resource type="Texture2D" uid="uid://7raq8dwgqir" path="res://assets/slime_death.png" id="3_r2qxm"]
 [ext_resource type="Texture2D" uid="uid://xocnw8o402pa" path="res://assets/slime_hit.png" id="4_cha8e"]
@@ -149,7 +149,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kugj"]
-radius = 310.002
+radius = 527.641
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6dbhj"]
 radius = 38.4708
@@ -160,7 +160,7 @@ script = ExtResource("1_hlivd")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_iml0o")
-animation = &"idle"
+animation = &"hurt"
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 2

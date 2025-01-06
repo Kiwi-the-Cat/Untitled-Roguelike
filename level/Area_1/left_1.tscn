@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://8kixlni2fqoi"]
 
 [ext_resource type="TileSet" uid="uid://chfwstblemhbi" path="res://level/TileSet.tres" id="1_b8fa5"]
-[ext_resource type="Script" path="res://level/Area_1/left_1.gd" id="1_upkqa"]
+[ext_resource type="Script" path="res://library/left_1.gd" id="1_upkqa"]
 [ext_resource type="PackedScene" uid="uid://bt68687tfw0ca" path="res://player/Player.tscn" id="2_rs7e4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f077y"]

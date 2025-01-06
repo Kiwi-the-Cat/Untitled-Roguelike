@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://cvbs4hog846un"]
 
-[ext_resource type="Script" path="res://level/level_4.gd" id="1_ttgtb"]
+[ext_resource type="Script" path="res://library/level_4.gd" id="1_ttgtb"]
 [ext_resource type="TileSet" uid="uid://chfwstblemhbi" path="res://level/TileSet.tres" id="1_x07pq"]
 [ext_resource type="PackedScene" uid="uid://bt68687tfw0ca" path="res://player/Player.tscn" id="3_epi6c"]
 
