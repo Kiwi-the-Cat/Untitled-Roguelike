@@ -173,6 +173,8 @@ shape = SubResource("CircleShape2D_4kugj")
 position = Vector2(0, 50)
 shape = SubResource("CircleShape2D_6dbhj")
 
+[node name="HitBox" type="Area2D" parent="."]
+
 [connection signal="frame_changed" from="Sprite" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
