@@ -3,6 +3,7 @@ extends Node2D
 #Level variables
 var enemyCount:int
 var exits:Array
+var currentLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,6 +40,7 @@ func change_level(_filePath:String):
 	var level = load(path) #Loads path
 	var levelNode = level.instantiate() #Turns path to node
 	add_child(levelNode) #Adds node
+	currentLevel = levelNode
 
 # Adds collisions for level exits (the exit itself isn't relevant)
 # Separate from change_level because the level needs to be loaded and added before exits can be added
@@ -60,3 +62,8 @@ func enemy_death():
 		print("Exits open")
 		for exit:CollisionShape2D in exits:
 			exit.disabled = false
+
+func _on_player_dead():
+	for child:Node in get_children():
+		remove_child(child)
+	add_child(currentLevel)

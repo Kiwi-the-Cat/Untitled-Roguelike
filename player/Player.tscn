@@ -128,3 +128,10 @@ shape = SubResource("CapsuleShape2D_48c63")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 shape = SubResource("CapsuleShape2D_vqjwa")
 debug_color = Color(0.763631, 0.391308, 0.586205, 0.42)
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="PlayerHitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -1,9 +1,18 @@
 extends CharacterBody2D
 
+signal dead
+
 const SPEED : float = 300.0
 const JUMP_VELOCITY : float = -400.0
 
+@export var health := 6
+
+var enemyInRange := false
+var attackCooldown := true
+var isAlive := true
+
 @onready var playerSprite : AnimatedSprite2D = $Sprite
+
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -23,6 +32,10 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _process(_delta):
+	if (health <= 0):
+		isAlive = false
+		dead.emit()
+	
 	if (velocity == Vector2(0, 0)):
 		playerSprite.play("idle")
 	elif (velocity.x > 0 or velocity.x < 0) or (velocity.y > .1 or velocity.y < -.1):
@@ -37,3 +50,26 @@ func setCameraLimits(top, bottom, left, right):
 	$Camera2D.limit_bottom = bottom
 	$Camera2D.limit_left = left
 	$Camera2D.limit_right = right
+
+func player():
+	pass
+
+func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	if (body.has_method("enemy")):
+		enemyInRange = true
+
+
+func _on_player_hitbox_body_exited(body: Node2D) -> void:
+	if (body.has_method("enemy")):
+		enemyInRange = false
+		
+func enemyAttack():
+	if (enemyInRange and attackCooldown):
+		attackCooldown = false
+		health -= 1
+		$AttackCooldown.start()
+		print("Player took damage")
+
+
+func _on_attack_cooldown_timeout() -> void:
+	attackCooldown = true
