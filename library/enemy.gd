@@ -1,21 +1,30 @@
 extends CharacterBody2D
 
-@export var speed : int = 20
-
 var playerChase : bool = false
 var player = null
+
+#Movement Variables
+@onready var navAgent : NavigationAgent2D = $NavigationAgent2D
+@export var speed : float = 100
+var target : Vector2
+var currentPos : Vector2
+var nextPos : Vector2
+var detect_range : int = 200
 
 func _ready() -> void:
 	$Sprite.play("idle")
 
 func _physics_process(delta: float) -> void:
-	if playerChase:
-		position += (player.position - position)/speed
+	if(playerChase):
+		target = player.position
+		navAgent.set_target_position(target)
 		
-		if (player.position.x - position.x) < 0:
-			$Sprite.flip_h = false
-		else:
-			$Sprite.flip_h = true
+		currentPos = global_transform.origin
+		nextPos = navAgent.get_next_path_position()
+		velocity = (nextPos - currentPos).normalized() * speed
+		
+		$Sprite.flip_h = target.x > self.position.x
+		move_and_slide()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
