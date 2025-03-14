@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://bgfxrhtn563oq"]
 
-[ext_resource type="Script" path="res://library/level_1.gd" id="1_2jtp1"]
+[ext_resource type="Script" uid="uid://bynmxw0uikdv4" path="res://library/level_1.gd" id="1_2jtp1"]
 [ext_resource type="TileSet" uid="uid://chfwstblemhbi" path="res://level/TileSet.tres" id="2_c1crx"]
 [ext_resource type="Texture2D" uid="uid://bk2lcp8d8ojuu" path="res://assets/muddy_broken_ship.png" id="3_80x52"]
 [ext_resource type="PackedScene" uid="uid://bt68687tfw0ca" path="res://player/Player.tscn" id="4_4v3s3"]

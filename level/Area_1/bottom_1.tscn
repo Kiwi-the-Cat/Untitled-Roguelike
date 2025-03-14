@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bkys4lkvp1d7c"]
 
 [ext_resource type="TileSet" uid="uid://chfwstblemhbi" path="res://level/TileSet.tres" id="1_2tbjm"]
-[ext_resource type="Script" path="res://player/bottom_1.gd" id="1_f5upj"]
+[ext_resource type="Script" uid="uid://bk7ioxj6ei6l" path="res://player/bottom_1.gd" id="1_f5upj"]
 [ext_resource type="PackedScene" uid="uid://d1bd4e7q7jh2p" path="res://enemies/enemy.tscn" id="3_1bu6n"]
 [ext_resource type="PackedScene" uid="uid://bt68687tfw0ca" path="res://player/Player.tscn" id="4_8hut3"]
 
