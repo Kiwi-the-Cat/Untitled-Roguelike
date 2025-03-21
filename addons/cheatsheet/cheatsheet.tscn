@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://genbtx4li8h5"]
 
-[ext_resource type="Script" path="res://addons/cheatsheet/scripts/cheatsheet.gd" id="1_xc2al"]
+[ext_resource type="Script" uid="uid://ra7rvp76nux5" path="res://addons/cheatsheet/scripts/cheatsheet.gd" id="1_xc2al"]
 [ext_resource type="Theme" uid="uid://cx73s5p668lkb" path="res://addons/cheatsheet/resources/theme.tres" id="2_luvyh"]
-[ext_resource type="Script" path="res://addons/cheatsheet/scripts/stats_display.gd" id="3_rjkwo"]
+[ext_resource type="Script" uid="uid://cm7up80xsdat2" path="res://addons/cheatsheet/scripts/stats_display.gd" id="3_rjkwo"]
 [ext_resource type="Material" uid="uid://djy8vjdw5lvhj" path="res://addons/cheatsheet/shaders/background.tres" id="4_8o8u8"]
-[ext_resource type="Script" path="res://addons/cheatsheet/scripts/pallette.gd" id="5_4dg0m"]
+[ext_resource type="Script" uid="uid://7hrfophjisdo" path="res://addons/cheatsheet/scripts/pallette.gd" id="5_4dg0m"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_gm0jc"]
 device = -1

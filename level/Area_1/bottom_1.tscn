@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bkys4lkvp1d7c"]
 
 [ext_resource type="TileSet" uid="uid://chfwstblemhbi" path="res://level/TileSet.tres" id="1_2tbjm"]
-[ext_resource type="Script" path="res://player/bottom_1.gd" id="1_f5upj"]
+[ext_resource type="Script" uid="uid://bk7ioxj6ei6l" path="res://player/bottom_1.gd" id="1_f5upj"]
 [ext_resource type="PackedScene" uid="uid://d1bd4e7q7jh2p" path="res://enemies/enemy.tscn" id="3_1bu6n"]
 [ext_resource type="PackedScene" uid="uid://bt68687tfw0ca" path="res://player/Player.tscn" id="4_8hut3"]
 
@@ -63,9 +63,13 @@ navigation_polygon = SubResource("NavigationPolygon_krs4o")
 position = Vector2(440, 176)
 scale = Vector2(0.2, 0.2)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+
 [node name="Enemy2" parent="." instance=ExtResource("3_1bu6n")]
 position = Vector2(840, 552)
 scale = Vector2(0.2, 0.2)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy2"]
 
 [connection signal="body_entered" from="Exit1" to="." method="_on_exit_1_body_entered"]
 [connection signal="body_entered" from="Exit2" to="." method="_on_exit_2_body_entered"]

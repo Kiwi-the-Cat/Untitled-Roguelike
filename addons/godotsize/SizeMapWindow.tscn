@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbkdorc6w0dln"]
 
-[ext_resource type="Texture2D" uid="uid://c3neulsswfssf" path="res://addons/godotsize/Icons/cog.png" id="1_4mbh3"]
-[ext_resource type="Texture2D" uid="uid://djjln8qyewx7n" path="res://addons/godotsize/Icons/reload.png" id="2_3ckyf"]
+[ext_resource type="Texture2D" uid="uid://ysuk6xxpfsdn" path="res://addons/godotsize/Icons/cog.png" id="1_4mbh3"]
+[ext_resource type="Texture2D" uid="uid://b327ufaxo1s8c" path="res://addons/godotsize/Icons/reload.png" id="2_3ckyf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l2i63"]
 
