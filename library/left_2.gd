@@ -3,7 +3,7 @@ extends Node2D
 func _ready():
 	$Player.setCameraLimits(0, 670, 0, 1240)
 	$Player/Camera2D.zoom = Vector2(3.5, 3.5)
-	if (get_parent() != null):
+	if (get_parent().scene_file_path == "res://level/main.tscn"):
 		get_parent().set_exits([$Exit/CollisionShape2D])
 		get_parent().set_enemy_count(3)
 
@@ -11,5 +11,5 @@ func _on_enemy_death():
 	get_parent().enemy_death()
 
 func _on_exit_body_entered(area):
-	if(get_parent() != null):
+	if (get_parent().scene_file_path == "res://level/main.tscn"):
 		get_parent().change_level("Area_1_Left")

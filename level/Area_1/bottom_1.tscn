@@ -62,12 +62,14 @@ navigation_polygon = SubResource("NavigationPolygon_krs4o")
 [node name="Enemy" parent="." instance=ExtResource("3_1bu6n")]
 position = Vector2(440, 176)
 scale = Vector2(0.2, 0.2)
+speed = null
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
 
 [node name="Enemy2" parent="." instance=ExtResource("3_1bu6n")]
 position = Vector2(840, 552)
 scale = Vector2(0.2, 0.2)
+speed = null
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy2"]
 
