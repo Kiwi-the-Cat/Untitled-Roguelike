@@ -182,16 +182,8 @@ shape = SubResource("CircleShape2D_6dbhj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_t0n1x")
 
-[node name="IFrames" type="Timer" parent="."]
-one_shot = true
-
-[node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 0.8
-one_shot = true
-
 [connection signal="frame_changed" from="Sprite" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
-[connection signal="timeout" from="IFrames" to="." method="_on_i_frames_timeout"]

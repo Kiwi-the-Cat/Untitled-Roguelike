@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bt68687tfw0ca"]
+[gd_scene load_steps=18 format=3 uid="uid://bt68687tfw0ca"]
 
 [ext_resource type="Script" uid="uid://dh3ma8er1n4wd" path="res://player/Player.gd" id="1_airol"]
 [ext_resource type="Texture2D" uid="uid://dg3ntb6yggw1h" path="res://assets/char_idle_left.png" id="2_6yuf7"]
 [ext_resource type="Texture2D" uid="uid://vesq74grw3dk" path="res://assets/char_atk_side.png" id="2_s7k0p"]
 [ext_resource type="Texture2D" uid="uid://cpxfu5yh2cfk3" path="res://assets/char_walk_left.png" id="3_tp2em"]
-[ext_resource type="Script" uid="uid://b7jw5qe3khhwu" path="res://library/main.gd" id="5_x8kxw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf63g"]
 atlas = ExtResource("2_s7k0p")
@@ -125,17 +124,13 @@ position = Vector2(0, 25)
 shape = SubResource("CapsuleShape2D_48c63")
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
-script = ExtResource("5_x8kxw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 shape = SubResource("CapsuleShape2D_vqjwa")
 debug_color = Color(0.763631, 0.391308, 0.586205, 0.42)
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 0.8
-one_shot = true
-
-[node name="IFrames" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="PlayerHitbox" to="." method="_on_player_hitbox_body_exited"]

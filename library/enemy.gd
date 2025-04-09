@@ -13,7 +13,6 @@ var target : Vector2
 var current_pos : Vector2
 var next_pos : Vector2
 var detect_range : int = 200
-var i_frames := true
 
 func _ready() -> void:
 	$Sprite.play("idle")
@@ -54,13 +53,6 @@ func _on_hit_box_body_exited(body: Node2D) -> void:
 	
 func deal_damage() -> void:
 	if player_in_range and Global.player_current_attack:
-		if i_frames:
-			health -= 1
-			$IFrames.start()
-			i_frames = false
-			if health <= 0:
-				self.queue_free()
-
-
-func _on_i_frames_timeout() -> void:
-	i_frames = true
+		health -= 1
+		if health <= 0:
+			self.queue_free()
