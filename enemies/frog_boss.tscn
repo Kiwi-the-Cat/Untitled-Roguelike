@@ -1,6 +1,5 @@
-[gd_scene load_steps=61 format=3 uid="uid://d0215c3s7c3pi"]
+[gd_scene load_steps=60 format=3 uid="uid://d0215c3s7c3pi"]
 
-[ext_resource type="Script" uid="uid://dyll466h10eof" path="res://enemies/frog_boss.gd" id="1_8epao"]
 [ext_resource type="Texture2D" uid="uid://cambc7plxw3o" path="res://assets/bigfrog_defeat.png" id="2_3bheh"]
 [ext_resource type="Texture2D" uid="uid://b8pul61w4b1r2" path="res://assets/bigfrog_fireball.png" id="3_1nm2o"]
 [ext_resource type="Texture2D" uid="uid://b34o1qwott0jp" path="res://assets/bigfrog_hit.png" id="4_u8xfy"]
@@ -401,12 +400,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wfsag"]
 radius = 90.0
 
-[node name="FrogBoss" type="CharacterBody2D"]
-script = ExtResource("1_8epao")
+[node name="FrogBoss" type="Node2D"]
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="FrogCharacter" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="FrogCharacter"]
 sprite_frames = SubResource("SpriteFrames_lbjxy")
 animation = &"idle"
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="FrogCharacter"]
 shape = SubResource("CircleShape2D_wfsag")
