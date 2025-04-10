@@ -11,10 +11,13 @@ var enemyInRange := false
 var attackCooldown := true
 var isAlive := true
 
+var attack_ip := false
+
 @onready var playerSprite : AnimatedSprite2D = $Sprite
 
 
 func _physics_process(_delta):
+	attack()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var directionX = Input.get_axis("ui_left", "ui_right")
@@ -68,8 +71,18 @@ func enemyAttack():
 		attackCooldown = false
 		health -= 1
 		$AttackCooldown.start()
-		print("Player took damage")
+		print("Player took damage", health)
 
 
 func _on_attack_cooldown_timeout() -> void:
 	attackCooldown = true
+	Global.player_current_attack = false
+	attack_ip = false
+
+func attack() -> void:
+	if Input.is_action_just_pressed("attack"):
+		Global.player_current_attack = true
+		attack_ip = true
+		playerSprite.play("attack_side")
+		$AttackCooldown.start()
+		print("attacked")

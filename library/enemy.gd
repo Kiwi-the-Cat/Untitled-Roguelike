@@ -14,6 +14,8 @@ var current_pos : Vector2
 var next_pos : Vector2
 var detect_range : int = 200
 
+var i_frames := true
+
 func _ready() -> void:
 	$Sprite.play("idle")
 
@@ -21,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	deal_damage()
 	
 	if(player_chase):
-		target = player.position
+		target = Vector2(player.position.x, player.position.y)
 		navAgent.set_target_position(target)
 		
 		current_pos = global_transform.origin
@@ -29,7 +31,8 @@ func _physics_process(delta: float) -> void:
 		velocity = (next_pos - current_pos).normalized() * speed
 		
 		$Sprite.flip_h = target.x > self.position.x
-		move_and_slide()
+		if(position.distance_to(target) > 15): #Doesn't move if too close to player
+			move_and_slide()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
@@ -54,5 +57,12 @@ func _on_hit_box_body_exited(body: Node2D) -> void:
 func deal_damage() -> void:
 	if player_in_range and Global.player_current_attack:
 		health -= 1
-		if health <= 0:
-			self.queue_free()
+		if i_frames:
+			health -= 1
+			$IFrames.start()
+			i_frames = false
+			if health <= 0:
+				self.queue_free()
+
+func _on_i_frames_timeout() -> void:
+	i_frames = true
