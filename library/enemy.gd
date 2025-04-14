@@ -56,13 +56,12 @@ func _on_hit_box_body_exited(body: Node2D) -> void:
 	
 func deal_damage() -> void:
 	if player_in_range and Global.player_current_attack:
-		health -= 1
-		if i_frames:
+		if !i_frames:
 			health -= 1
+			i_frames = true
 			$IFrames.start()
-			i_frames = false
 			if health <= 0:
 				self.queue_free()
 
 func _on_i_frames_timeout() -> void:
-	i_frames = true
+	i_frames = false
