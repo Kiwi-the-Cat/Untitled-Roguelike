@@ -14,5 +14,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	#Expands player camera so they can see the full field
 	$Player/Camera2D.zoom = Vector2(0.9, 0.9)
 	
+	#Plays summon animation
+	$FrogBoss/FrogCharacter/Sprite2D.play("summon")
+	
 	#Disables self to prevent accidental resetting of the boss
 	$BossStart.monitoring = false

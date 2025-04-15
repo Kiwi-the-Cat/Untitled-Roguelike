@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var health : int
+@export var health : int = 3
+signal enemy_death #Lets the level know that the enemy has died
 
 var player_chase : bool = false
 var player = null
@@ -61,7 +62,10 @@ func deal_damage() -> void:
 			i_frames = true
 			$IFrames.start()
 			if health <= 0:
-				self.queue_free()
+				$Sprite.play("death")
+				if($Sprite.animation_finished): ##only official die after animation is over
+					enemy_death.emit()
+					self.queue_free()
 
 func _on_i_frames_timeout() -> void:
 	i_frames = false

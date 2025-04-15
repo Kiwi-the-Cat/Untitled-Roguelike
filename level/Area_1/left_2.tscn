@@ -46,13 +46,19 @@ navigation_polygon = SubResource("NavigationPolygon_5lp2p")
 position = Vector2(240, 496)
 scale = Vector2(0.2, 0.2)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+
 [node name="Enemy2" parent="." instance=ExtResource("3_tmr20")]
 position = Vector2(536, 480)
 scale = Vector2(0.2, 0.2)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy2"]
+
 [node name="Enemy3" parent="." instance=ExtResource("3_tmr20")]
 position = Vector2(944, 80)
 scale = Vector2(0.2, 0.2)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy3"]
 
 [node name="Enemy_Cover" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAPAB0AAAAAAAEAAAA=")
@@ -71,4 +77,7 @@ disabled = true
 [node name="Player" parent="." instance=ExtResource("2_x0f8p")]
 position = Vector2(32, 320)
 
+[connection signal="enemy_death" from="Enemy" to="." method="_on_enemy_death"]
+[connection signal="enemy_death" from="Enemy2" to="." method="_on_enemy_death"]
+[connection signal="enemy_death" from="Enemy3" to="." method="_on_enemy_death"]
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

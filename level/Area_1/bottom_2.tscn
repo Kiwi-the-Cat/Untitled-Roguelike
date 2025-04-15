@@ -72,13 +72,19 @@ navigation_polygon = SubResource("NavigationPolygon_usf56")
 position = Vector2(384, 664)
 scale = Vector2(0.2, 0.2)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+
 [node name="Enemy2" parent="." instance=ExtResource("3_ol5g1")]
 position = Vector2(296, 304)
 scale = Vector2(0.2, 0.2)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy2"]
+
 [node name="Enemy3" parent="." instance=ExtResource("3_ol5g1")]
 position = Vector2(472, 144)
 scale = Vector2(0.2, 0.2)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy3"]
 
 [node name="Enemy_Cover" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -86,3 +92,6 @@ tile_map_data = PackedByteArray("AAASABMAAAAAAAAAAAAdAAkAAAAAAAMAAAA=")
 tile_set = SubResource("TileSet_hmasw")
 
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
+[connection signal="enemy_death" from="Enemy" to="." method="_on_enemy_death"]
+[connection signal="enemy_death" from="Enemy2" to="." method="_on_enemy_death"]
+[connection signal="enemy_death" from="Enemy3" to="." method="_on_enemy_death"]

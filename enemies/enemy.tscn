@@ -159,7 +159,6 @@ radius = 78.2624
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_hlivd")
-health = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)

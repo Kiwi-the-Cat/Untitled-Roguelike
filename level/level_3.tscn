@@ -62,3 +62,4 @@ scale = Vector2(0.2, 0.2)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
 
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
+[connection signal="enemy_death" from="Enemy" to="." method="_on_enemy_death"]
