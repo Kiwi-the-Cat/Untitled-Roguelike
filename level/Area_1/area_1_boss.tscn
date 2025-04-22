@@ -24,12 +24,11 @@ tile_map_data = PackedByteArray("AAD+/xAAAQAAAAQAAAD//xAAAQAAAAQAAAAAABAAAQAAAAQ
 enabled = false
 tile_set = ExtResource("1_vigaf")
 
-[node name="FrogBoss" parent="." instance=ExtResource("2_e4wyi")]
-position = Vector2(596, 95)
-script = null
-
 [node name="Player" parent="." instance=ExtResource("3_pjnwd")]
 position = Vector2(592, 582)
+
+[node name="FrogBoss" parent="." instance=ExtResource("2_e4wyi")]
+position = Vector2(599, 39)
 
 [node name="BossStart" type="Area2D" parent="."]
 

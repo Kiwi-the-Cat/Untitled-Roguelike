@@ -15,7 +15,7 @@ var current_pos : Vector2
 var next_pos : Vector2
 var detect_range : int = 200
 
-var i_frames := true
+var i_frames := false
 
 func _ready() -> void:
 	$Sprite.play("idle")
@@ -50,7 +50,6 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_range = true
 
-
 func _on_hit_box_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_range = false
@@ -58,14 +57,26 @@ func _on_hit_box_body_exited(body: Node2D) -> void:
 func deal_damage() -> void:
 	if player_in_range and Global.player_current_attack:
 		if !i_frames:
-			health -= 1
-			i_frames = true
-			$IFrames.start()
-			if health <= 0:
-				$Sprite.play("death")
-				if($Sprite.animation_finished): ##only official die after animation is over
-					enemy_death.emit()
-					self.queue_free()
+			$Sprite.play("hurt")
 
 func _on_i_frames_timeout() -> void:
 	i_frames = false
+
+func _on_sprite_animation_looped() -> void:
+	#Checks enemy condition after animations
+	match($Sprite.animation):
+		"hurt":
+			health -= 1
+			print("Enemy takes damage")
+			i_frames = true
+			$IFrames.start()
+			
+			if health <= 0:
+				$Sprite.play("death")
+			else:
+				$Sprite.play("idle")
+		"death":
+			enemy_death.emit()
+			self.queue_free()
+		_:
+			$Sprite.play("idle")

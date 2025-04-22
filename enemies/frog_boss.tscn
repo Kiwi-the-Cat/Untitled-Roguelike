@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://d0215c3s7c3pi"]
+[gd_scene load_steps=63 format=3 uid="uid://d0215c3s7c3pi"]
 
 [ext_resource type="Script" uid="uid://cyn8joq21k28l" path="res://library/frog_boss.gd" id="1_3bheh"]
 [ext_resource type="Texture2D" uid="uid://4la5eqtbj7yu" path="res://assets/Shadow.png" id="2_1nm2o"]
@@ -402,10 +402,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wfsag"]
 radius = 61.4003
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nm2o"]
+radius = 91.0055
+
 [node name="FrogBoss" type="Node2D"]
 script = ExtResource("1_3bheh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="."]
 visible = false
 self_modulate = Color(0, 0, 0, 0.392157)
 position = Vector2(2, 25)
@@ -421,3 +424,16 @@ animation = &"idle"
 [node name="Hurtbox" type="CollisionShape2D" parent="FrogCharacter"]
 position = Vector2(0, 26)
 shape = SubResource("CircleShape2D_wfsag")
+
+[node name="IFrames" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 27)
+shape = SubResource("CircleShape2D_1nm2o")
+
+[connection signal="animation_looped" from="FrogCharacter/Sprite2D" to="." method="_on_sprite_2d_animation_looped"]
+[connection signal="timeout" from="IFrames" to="." method="_on_i_frames_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

@@ -4,6 +4,7 @@ extends Node2D
 var enemyCount:int
 var exits:Array
 var currentLevel
+var levelsPassed:int = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,13 +31,20 @@ func change_level(_filePath:String):
 	match(_filePath):
 		"Area_1_Left": #random level entering from left
 			path = area_1[0][randi_range(0, area_1[0].size() - 1)]
+			levelsPassed += 1
+			if(levelsPassed >= 4):
+				path = "res://level/Area_1/area_1_boss.tscn"
 		"Area_1_Bottom": #random level entering from bottom
 			path = area_1[1][randi_range(0, area_1[1].size() - 1)]
+			levelsPassed += 1
+			if(levelsPassed >= 4):
+				path = "res://level/Area_1/area_1_boss.tscn"
 		_: #exact level from _filePath
 			path = _filePath
 	
 	#Adds new level as child from path variable
 	print(path)
+	print("Levels Passed: " + str(levelsPassed))
 	var level = load(path) #Loads path
 	var levelNode = level.instantiate() #Turns path to node
 	add_child(levelNode) #Adds node
